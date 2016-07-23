@@ -1,6 +1,6 @@
 module renderFull() {
     difference() {
-        enclosure(boxType, boxColor);
+        enclosure(boxType, part, boxColor);
         
         translate([xOffset_510, yOffset_510, zOffset_510])
             color(boxColor) connector510(type_510_connector, false);
@@ -18,7 +18,7 @@ module renderFull() {
         if(enableSled == "yes")
             translate([xOffsetSled, yOffsetSled, zOffsetSled])
                 rotate([xRotateSled, yRotateSled, zRotateSled])    
-                    sled(sledType, boxColor, false);
+                    color(boxColor) sled(sledType, boxColor, false);
     }
 }
 
