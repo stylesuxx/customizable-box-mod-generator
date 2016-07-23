@@ -5,21 +5,20 @@ include <display.scad>;
 include <helpers.scad>;
 include <enclosure.scad>;
 
-/* [General] */
-// If visualisation is enabled, the parts are rendered
-visualize = "yes"; // [yes, no]
+/* [Enclosure] */
 
 // Select type of enclosure
 boxType = "hammond1590b"; // [hammond1550a: Hammond 1550A, hammond1590a: Hammond 1590A, hammond1590b: Hammond 1590B, hammond1590g: Hammond 1590G]
 
 // Select color of the enclosure
-boxColor = "silver"; // [gray: Gray, silver:Silver, black:Black]
+boxColor = "gray"; // [gray, silver, black]
 
 /* [510 connector] */
+
 // Select your 510 connector
 type_510_connector = "varitube22mmV2Slotted"; // [varitube12mmBottomFeed: Varitube 12mm Bottom Feed, varitube14mm: Varitube 14mm, varitube22mmBottomFeed: Varitube 22mm Bottom Feed, varitube22mmV2Flat: Varitube 22mm Flat V2, varitube22mmV2Slotted: Varitube 22mm Slotted V2, varitube28.5mm: Varitube 28.5mm]
 // Select color of the 510 connector
-color_510_connector = "gray"; // [gray: Gray, silver:Silver, black:Black]
+color_510_connector = "silver"; // [gray, silver, black]
 
 // x offset from the center
 xOffset_510 = 0; // [-100:0.1:100]
@@ -29,6 +28,7 @@ yOffset_510 = 0; // [-100:0.1:100]
 zOffset_510 = 112.4; // [-200:0.1:200]
 
 /* [Fire Switch] */
+
 // Enable a fire switch?
 enableFireSwitch = "yes"; // [yes, no]
 // Select type of fire switch
@@ -51,6 +51,7 @@ yRotateFireSwitch = 90; // [0:360]
 zRotateFireSwitch = 0; // [0:360]
 
 /* [Volt Meter] */
+
 // Enable the volt meter?
 enableVoltMeter = "yes"; // [yes, no]
 // Select your volt meter type
@@ -73,10 +74,11 @@ yRotateVoltMeter = 0; // [0:360]
 zRotateVoltMeter = 0; // [0:360]
 
 /* [Sled] */
+
 // Enable a battery sled?
 enableSled = "yes"; // [yes, no]
 // Select your volt meter type
-sledType = "keystone1042"; // [keystone1042: Keystone 18650 Single (1042), keystone1048: Keystone 18650 Double (1048)]
+sledType = "keystone1048"; // [keystone1042: Keystone single 18650 Single (1042), keystone1048: Keystone dual 18650 (1048)]
 // Select color of the volt meter
 sledColor = "black"; // [white: White, gray: Gray, silver:Silver, black:Black]
 
@@ -94,11 +96,23 @@ yRotateSled = 90; // [0:360]
 // z rotation
 zRotateSled = 0; // [0:360]
 
-/* [Hidden] */
-$fn = 360;
+/* [View Modes] */
 
-rotate([0,0,$t*360]) {
+// If visualisation is enabled, the parts are rendered
+visualize = "yes"; // [yes, no]
+// Which parts of the box to display
+part = "both"; // [both, body, lid]
+
+/* [Hidden] */
+
+$fn = 36;
+
+xRotate = (part != "both") ? 270 : 0;
+yRotate = (part == "lid") ? 180 : 0;
+zRotate = $t * 360;
+
+rotate([xRotate, yRotate, zRotate]) {
     renderFull();
-    if(visualize == "yes")
+    if(visualize == "yes" && part == "both")
         visualisation();
 }
