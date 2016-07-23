@@ -1,43 +1,50 @@
 module renderFull() {
-    difference() {
-        enclosure(boxType, part, boxColor);
-        
-        translate([xOffset_510, yOffset_510, zOffset_510])
-            color(boxColor) connector510(type_510_connector, false);
-        
+  difference() {
+    enclosure(boxType, part, boxColor);
+    
+    color(boxColor) {
+      group() {
+        translate(pos510)
+          connector510(type_510_connector, false);
+
         if(enableFireSwitch == "yes")
-            translate([xOffsetFireSwitch, yOffsetFireSwitch, zOffsetFireSwitch])
-                rotate([xRotateFireSwitch, yRotateFireSwitch, zRotateFireSwitch])
-                    color(boxColor) switch(fireSwitchType, false);
-        
+          translate(posFireSwitch)
+            rotate(rotFireSwitch)
+              switch(fireSwitchType, false);
+
         if(enableVoltMeter == "yes")
-            translate([xOffsetVoltMeter, yOffsetVoltMeter, zOffsetVoltMeter])
-                rotate([xRotateVoltMeter, yRotateVoltMeter, zRotateVoltMeter])    
-                    color(boxColor) display(voltMeterType, false);
-        
+          translate(posVoltMeter)
+            rotate(rotVoltMeter)
+                display(voltMeterType, false);
+
         if(enableSled == "yes")
-            translate([xOffsetSled, yOffsetSled, zOffsetSled])
-                rotate([xRotateSled, yRotateSled, zRotateSled])    
-                    color(boxColor) sled(sledType, boxColor, false);
+          translate(posSled)
+            rotate(rotSled)
+              sled(sledType, boxColor, false);
+      }
     }
+  }
 }
 
 module visualisation() {
-    translate([xOffset_510, yOffset_510, zOffset_510])
-        color(color_510_connector) connector510(type_510_connector);
+  translate(pos510)
+    color(color_510_connector)
+      connector510(type_510_connector);
 
-    if(enableFireSwitch == "yes")
-        translate([xOffsetFireSwitch, yOffsetFireSwitch, zOffsetFireSwitch])   
-            rotate([xRotateFireSwitch, yRotateFireSwitch, zRotateFireSwitch])
-                color(fireSwitchColor) switch(fireSwitchType);
+  if(enableFireSwitch == "yes")
+    translate(posFireSwitch)
+      rotate(rotFireSwitch)
+        color(fireSwitchColor)
+          switch(fireSwitchType);
 
-    if(enableVoltMeter == "yes")
-        translate([xOffsetVoltMeter, yOffsetVoltMeter, zOffsetVoltMeter])
-            rotate([xRotateVoltMeter, yRotateVoltMeter, zRotateVoltMeter])    
-                color(voltMeterColor) display(voltMeterType);
+  if(enableVoltMeter == "yes")
+    translate(posVoltMeter)
+      rotate(rotVoltMeter)
+        color(voltMeterColor)
+          display(voltMeterType);
 
-    if(enableSled == "yes")
-            translate([xOffsetSled, yOffsetSled, zOffsetSled])
-                rotate([xRotateSled, yRotateSled, zRotateSled])    
-                    sled(sledType, sledColor);
+  if(enableSled == "yes")
+    translate(posSled)
+      rotate(rotSled)
+        sled(sledType, sledColor);
 }
