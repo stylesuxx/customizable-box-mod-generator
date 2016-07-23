@@ -11,15 +11,10 @@ module renderFull() {
         rotate(rotFireSwitch)
           switch(fireSwitchType, boxColor, false);
 
-    color(boxColor) {
-      group() {
-
-        if(enableVoltMeter == "yes")
-          translate(posVoltMeter)
-            rotate(rotVoltMeter)
-                display(voltMeterType, false);
-      }
-    }
+    if(enableVoltMeter == "yes")
+      translate(posVoltMeter)
+        rotate(rotVoltMeter)
+          display(voltMeterType, boxColor, false);
 
     if(enableSled == "yes")
       translate(posSled)
@@ -41,8 +36,7 @@ module visualisation() {
   if(enableVoltMeter == "yes")
     translate(posVoltMeter)
       rotate(rotVoltMeter)
-        color(voltMeterColor)
-          display(voltMeterType);
+        display(voltMeterType, voltMeterColor);
 
   if(enableSled == "yes")
     translate(posSled)

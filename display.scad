@@ -7,27 +7,28 @@
 
 //display("seedVoltMeter");
 
-module display(type, holes=true) {
-    if(type == "seedVoltMeter")
-        seedVoltMeter(holes);
+module display(type, displayColor="white", holes=true) {
+  if(type == "seedVoltMeter")
+    seedVoltMeter(displayColor, holes);
 }
 
-module seedVoltMeter(holes=true) {
-    displayLength = 24;
-    displayWidth = 11;
-    displayHeight = (holes) ? 9 : 10;
-    
-    boardLength = 30;
-    boardWidth = 12;
-    boardHeight = 2;
-    
-    padding = (boardLength - displayLength) / 2;
+module seedVoltMeter(displayColor="white", holes=true) {
+  displayLength = 24;
+  displayWidth = 11;
+  displayHeight = (holes) ? 9 : 10;
 
-    translate([-boardLength / 2, -displayWidth / 2, 0])
-        group() {
-            cube([boardLength, boardWidth, boardHeight]);
-            
-            translate([padding, 0, boardHeight])
-                cube([displayLength, displayWidth, displayHeight]);
-        }
+  boardLength = 30;
+  boardWidth = 12;
+  boardHeight = 2;
+
+  padding = (boardLength - displayLength) / 2;
+
+  translate([-boardLength / 2, -displayWidth / 2, 0])
+    color(displayColor)
+      group() {
+        cube([boardLength, boardWidth, boardHeight]);
+
+        translate([padding, 0, boardHeight])
+          cube([displayLength, displayWidth, displayHeight]);
+      }
 }
