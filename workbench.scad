@@ -96,7 +96,7 @@ yRotateSled = 90; // [0:360]
 // z rotation
 zRotateSled = 0; // [0:360]
 
-/* [View Modes] */
+/* [View Mode] */
 
 // If visualisation is enabled, the parts are rendered
 visualize = "yes"; // [yes, no]
@@ -104,9 +104,23 @@ visualize = "yes"; // [yes, no]
 part = "both"; // [both, body, lid]
 
 /* [Hidden] */
-
+// Resolution for roundness: higher -> rounder edges -> longer render time
 $fn = 36;
 
+pos510 = [xOffset_510, yOffset_510, zOffset_510];
+posFireSwitch = [xOffsetFireSwitch, yOffsetFireSwitch, zOffsetFireSwitch];
+posVoltMeter = [xOffsetVoltMeter, yOffsetVoltMeter, zOffsetVoltMeter];
+posSled = [xOffsetSled, yOffsetSled, zOffsetSled];
+
+rotFireSwitch = [xRotateFireSwitch, yRotateFireSwitch, zRotateFireSwitch];
+rotVoltMeter = [xRotateVoltMeter, yRotateVoltMeter, zRotateVoltMeter];
+rotSled = [xRotateSled, yRotateSled, zRotateSled];
+
+/**
+ * To activate animation:
+ * View -> Animated
+ * Set FPS to 15 and steps to 100
+ */
 xRotate = (part != "both") ? 270 : 0;
 yRotate = (part == "lid") ? 180 : 0;
 zRotate = $t * 360;
