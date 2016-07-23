@@ -14,178 +14,181 @@
 //connector510("varitube22mmV2Plain");
 //connector510("varitube28.5mm");
 
-module connector510(type, holes=true) {
-    if(type == "varitube12mmBottomFeed")
-        varitube12mmBottomFeed(holes);
+module connector510(type, color510="silver", holes=true) {
+  if(type == "varitube12mmBottomFeed")
+    varitube12mmBottomFeed(color510, holes);
 
-    if(type == "varitube14mm")
-        varitube14mm(holes);
+  if(type == "varitube14mm")
+    varitube14mm(color510, holes);
 
-    if(type == "varitube22mmBottomFeed")
-        varitube22mmBottomFeed(holes);
+  if(type == "varitube22mmBottomFeed")
+    varitube22mmBottomFeed(color510, holes);
 
-    if(type == "varitube22mmV2Slotted")
-        varitube22mmV2Slotted(holes);
+  if(type == "varitube22mmV2Slotted")
+    varitube22mmV2Slotted(color510, holes);
 
-    if(type == "varitube22mmV2Plain")
-        varitube22mmV2Flat(holes);
-    
-    if(type == "varitube28.5mm")
-        varitube285mm(holes);
+  if(type == "varitube22mmV2Plain")
+    varitube22mmV2Flat(color510, holes);
+
+  if(type == "varitube28.5mm")
+    varitube285mm(color510, holes);
 }
 
-module varitube14mm(holes=true) {
-    bodyDiameter = 10;
-    bodyHeight = 10.52;
-    
-    ringDiameter = 14;
-    ringHeight = 1;
-    
-    holeDiameter = 7;
-    holeHeight = bodyHeight;
-    
+module varitube14mm(color510="silver", holes=true) {
+  bodyDiameter = 10;
+  bodyHeight = 10.52;
+
+  ringDiameter = 14;
+  ringHeight = 1;
+
+  holeDiameter = 7;
+  holeHeight = bodyHeight;
+
+  color(color510)
     varitubeBase(
-    bodyDiameter, bodyHeight,
-    ringDiameter, ringHeight,
-    holeDiameter, holeHeight,
-    holes, true);
+      bodyDiameter, bodyHeight,
+      ringDiameter, ringHeight,
+      holeDiameter, holeHeight,
+      holes, true);
 }
 
-module varitube12mm(holes=true) {
-    bodyDiameter = 10;
-    bodyHeight = 12;
-    
-    ringDiameter = 12;
-    ringHeight = 1;
-    
-    holeDiameter = 7;
-    holeHeight = bodyHeight;
-    
+module varitube12mm(color510="silver", holes=true) {
+  bodyDiameter = 10;
+  bodyHeight = 12;
+
+  ringDiameter = 12;
+  ringHeight = 1;
+
+  holeDiameter = 7;
+  holeHeight = bodyHeight;
+
+  color(color510)
     varitubeBase(
-    bodyDiameter, bodyHeight,
-    ringDiameter, ringHeight,
-    holeDiameter, holeHeight,
-    holes, false);
+      bodyDiameter, bodyHeight,
+      ringDiameter, ringHeight,
+      holeDiameter, holeHeight,
+      holes, false);
 }
 
-module varitube12mmBottomFeed(holes=true) {
-    squonkHeight = 10;
-    squonkDiameter = 3;
-    squonkRadius = squonkDiameter / 2;
-    
-    
-    group() {
-        varitube12mm(holes);
+module varitube12mmBottomFeed(color510="silver", holes=true) {
+  squonkHeight = 10;
+  squonkDiameter = 3;
+  squonkRadius = squonkDiameter / 2;
 
-        translate([0, 0, -12 - squonkHeight])
-            cylinder(r=squonkRadius, h=squonkHeight);
-    }
+  group() {
+    varitube12mm(holes);
+
+    translate([0, 0, -12 - squonkHeight])
+      cylinder(r=squonkRadius, h=squonkHeight);
+  }
 }
 
-module varitube22mmBottomFeed(holes=true) {
-    squonkHeight = 10;
-    squonkDiameter = 3;
-    squonkRadius = squonkDiameter / 2;
-    
-    group() {
-        varitube22mmV2(holes, false);
+module varitube22mmBottomFeed(color510="silver", holes=true) {
+  squonkHeight = 10;
+  squonkDiameter = 3;
+  squonkRadius = squonkDiameter / 2;
 
-        translate([0, 0, -10 - squonkHeight])
-            cylinder(r=squonkRadius, h=squonkHeight);
-    }
-}
-
-module varitube22mmV2Flat(holes=true) {
+  group() {
     varitube22mmV2(holes, false);
+
+    translate([0, 0, -10 - squonkHeight])
+      cylinder(r=squonkRadius, h=squonkHeight);
+  }
 }
 
-module varitube22mmV2Slotted(holes=true) {
-    varitube22mmV2(holes, true);
+module varitube22mmV2Flat(color510="silver", holes=true) {
+  varitube22mmV2(color510, holes, false);
 }
 
-module varitube22mmV2(holes=true, slotted=false) {
-    bodyDiameter = 10;
-    bodyHeight = 10.52;
-    
-    ringDiameter = 22;
-    ringHeight = 1;
-    
-    holeDiameter = 7;
-    holeHeight = bodyHeight;
-    
+module varitube22mmV2Slotted(color510="silver", holes=true) {
+  varitube22mmV2(color510, holes, true);
+}
+
+module varitube22mmV2(color510="silver", holes=true, slotted=false) {
+  bodyDiameter = 10;
+  bodyHeight = 10.52;
+
+  ringDiameter = 22;
+  ringHeight = 1;
+
+  holeDiameter = 7;
+  holeHeight = bodyHeight;
+
+  color(color510)
     varitubeBase(
-    bodyDiameter, bodyHeight,
-    ringDiameter, ringHeight,
-    holeDiameter, holeHeight,
-    holes, slotted);
+      bodyDiameter, bodyHeight,
+      ringDiameter, ringHeight,
+      holeDiameter, holeHeight,
+      holes, slotted);
 }
 
-module varitube285mm(holes=true) {
-    bodyDiameter = 10;
-    bodyHeight = 10.52;
-    
-    ringDiameter = 28.5;
-    ringHeight = 1;
-    
-    holeDiameter = 7;
-    holeHeight = bodyHeight;
-    
+module varitube285mm(color510="silver", holes=true) {
+  bodyDiameter = 10;
+  bodyHeight = 10.52;
+
+  ringDiameter = 28.5;
+  ringHeight = 1;
+
+  holeDiameter = 7;
+  holeHeight = bodyHeight;
+
+  color(color510)
     varitubeBase(
-    bodyDiameter, bodyHeight,
-    ringDiameter, ringHeight,
-    holeDiameter, holeHeight,
-    holes, true);
+      bodyDiameter, bodyHeight,
+      ringDiameter, ringHeight,
+      holeDiameter, holeHeight,
+      holes, true);
 }
 
 module varitubeBase(
-    bodyDiameter, bodyHeight,
-    ringDiameter, ringHeight,
-    holeDiameter, holeHeight,
-    holes=true, slotted=true)
+  bodyDiameter, bodyHeight,
+  ringDiameter, ringHeight,
+  holeDiameter, holeHeight,
+  holes=true, slotted=true)
 {
-    bodyRadius = bodyDiameter / 2;
-    ringRadius = ringDiameter / 2;
-    holeRadius = holeDiameter / 2;
+  bodyRadius = bodyDiameter / 2;
+  ringRadius = ringDiameter / 2;
+  holeRadius = holeDiameter / 2;
 
-    union() {
-        translate([0, 0, -bodyHeight])
-            build();
+  union() {
+    translate([0, 0, -bodyHeight])
+      build();
 
-        cube([0, 0, 0]);
+    cube([0, 0, 0]);
+  }
+
+  module build() {
+    difference() {
+      union() {
+        bottom();
+        translate([0, 0, bodyHeight])
+          top();
+      }
+
+      if(holes)
+        translate([0, 0, ringHeight])
+          cylinder(r=holeRadius, h=holeHeight + 1);
     }
+  }
 
-    module build() {
-        difference() {
-            union() {
-                bottom();
-                translate([0, 0, bodyHeight])
-                    top();
-            }
+  module bottom() {
+    cylinder(r=bodyRadius, h=bodyHeight + ringHeight / 2);
+  }
 
-            if(holes)
-                translate([0, 0, ringHeight])
-                    cylinder(r=holeRadius, h=holeHeight + 1);
-        }
+  module top() {
+    zOffset = ringHeight / 2;
+
+    difference() {
+      cylinder(r=ringRadius, h=ringHeight);
+
+      if(holes && slotted) {
+        translate([-ringDiameter / 2 - 1, 0, zOffset])
+          cube([ringDiameter + 2, ringHeight, ringHeight]);
+
+        translate([0, -ringDiameter / 2 - 1, zOffset])
+          rotate([0, 0, 90])
+            cube([ringDiameter + 2, ringHeight, ringHeight]);
+      }
     }
-
-    module bottom() {
-        cylinder(r=bodyRadius, h=bodyHeight + ringHeight / 2);
-    }
-
-    module top() {
-        zOffset = ringHeight / 2;
-
-        difference() {
-            cylinder(r=ringRadius, h=ringHeight);
-            
-            if(holes && slotted) {
-                translate([-ringDiameter / 2 - 1, 0, zOffset])
-                    cube([ringDiameter + 2, ringHeight, ringHeight]);
-                
-                translate([0, -ringDiameter / 2 - 1, zOffset])
-                    rotate([0, 0, 90])
-                        cube([ringDiameter + 2, ringHeight, ringHeight]);
-            }
-        }
-    }
+  }
 }
