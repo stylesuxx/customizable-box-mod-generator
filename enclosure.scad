@@ -7,6 +7,7 @@
  * + http://www.hammondmfg.com/pdf/1590B.pdf
  * + http://www.hammondmfg.com/pdf/1590G.pdf
  */
+ //$fn = 36;
  
  //enclosure("hammond1550a", "both", "grey");
  //enclosure("hammond1590a", "both", "grey");
@@ -181,15 +182,19 @@ module hammond(
         color(boxColor) lid();
 
   module lid() {
-    difference() {
-      union() {
-        roundedBody(lidHeight);
-        translate([0, 0, -zOffset])
-          screwPosts(lidHeight + zOffset);
+    group() {
+      difference() {
+        union() {
+          roundedBody(lidHeight);
+          translate([0, 0, -zOffset + 0.1])
+            screwPosts(lidHeight + zOffset - 0.1);
+        }
+
+        translate([0, 0, 2])
+          screwHoles(lidHeight);
       }
 
-      translate([0, 0, -zOffset + 1])
-        screwHoles(lidHeight);
+      cube(0); // So wer are able to group
     }
   }
 
@@ -198,8 +203,8 @@ module hammond(
       difference() {
         group() {
           roundedBody(bodyHeight);
-          translate([0, 0, -zOffset])
-            screwPosts(bodyHeight + zOffset);
+          translate([0, 0, -zOffset + 0.1])
+            screwPosts(bodyHeight + zOffset - 0.1);
         }
 
         translate([0, 0, -zOffset + 1])
