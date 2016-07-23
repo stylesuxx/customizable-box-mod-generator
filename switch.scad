@@ -21,110 +21,112 @@
 //switch("vandal19mmFlat");
 //switch("vandal19mmRaised");
 
-module switch(type, holes=true) {
+module switch(type, switchColor="silver", holes=true) {
     if(type == "cloneTec12mmFlat")
-        cloneTec12mmFlat(holes);
+        cloneTec12mmFlat(switchColor, holes);
 
     if(type == "cloneTec12mmRaised")
-        cloneTec12mmRaised(holes);
+        cloneTec12mmRaised(switchColor, holes);
 
     if(type == "vandal16mmFlat")
-        vandal16mmFlat(holes);
+        vandal16mmFlat(switchColor, holes);
 
     if(type == "vandal16mmRaised")
-        vandal16mmRaised(holes);
+        vandal16mmRaised(switchColor, holes);
 
     if(type == "vandal19mmFlat")
-        vandal19mmFlat(holes);
+        vandal19mmFlat(switchColor, holes);
 
     if(type == "vandal19mmRaised")
-        vandal19mmRaised(holes);
+        vandal19mmRaised(switchColor, holes);
 
 }
 
-module cloneTec12mmFlat(holes=true) {
-    cloneTec12mm(holes, false);
+module cloneTec12mmFlat(switchColor="silver", holes=true) {
+    cloneTec12mm(switchColor, holes, false);
 }
 
-module cloneTec12mmRaised(holes=true) {
-    cloneTec12mm(holes, true);
+module cloneTec12mmRaised(switchColor="silver", holes=true) {
+    cloneTec12mm(switchColor, holes, true);
 }
 
-module vandal16mmFlat(holes=true) {
-    vandal16mm(holes, false);
+module vandal16mmFlat(switchColor="silver", holes=true) {
+    vandal16mm(switchColor, holes, false);
 }
 
-module vandal16mmRaised(holes=true) {
-    vandal16mm(holes, true);
+module vandal16mmRaised(switchColor="silver", holes=true) {
+    vandal16mm(switchColor, holes, true);
 }
 
-module vandal19mmFlat(holes=true) {
-    vandal19mm(holes, false);
+module vandal19mmFlat(switchColor="silver", holes=true) {
+    vandal19mm(switchColor, holes, false);
 }
 
-module vandal19mmRaised(holes=true) {
-    vandal19mm(holes, true);
+module vandal19mmRaised(switchColor="silver", holes=true) {
+    vandal19mm(switchColor, holes, true);
 }
 
 
-module cloneTec12mm(holes=true, raised=false) {
-    diameterBottom = 12.1;
-    radiusBottom = diameterBottom / 2;
-    heightBottom = 7.9;
+module cloneTec12mm(switchColor="silver", holes=true, raised=false) {
+  diameterBottom = 12.1;
+  radiusBottom = diameterBottom / 2;
+  heightBottom = 7.9;
 
-    diameterRing = 14;
-    radiusRing = diameterRing / 2;
-    heightRing = 1.6;
+  diameterRing = 14;
+  radiusRing = diameterRing / 2;
+  heightRing = 1.6;
 
-    diameterButton = 8.6;
-    radiusButton = diameterButton / 2;
-    heightButton = (raised) ? 1.2 : 0;
+  diameterButton = 8.6;
+  radiusButton = diameterButton / 2;
+  heightButton = (raised) ? 1.2 : 0;
 
-    translate([0, 0, -heightBottom])
-        switchBase(
-            radiusBottom, heightBottom,
-            radiusRing, heightRing,
-            radiusButton, heightButton);
+  translate([0, 0, -heightBottom])
+    color(switchColor)
+      switchBase(
+        radiusBottom, heightBottom,
+        radiusRing, heightRing,
+        radiusButton, heightButton);
 }
 
-module vandal16mm(holes=true, raised=false) {
-    diameterBottom = 16;
-    radiusBottom = diameterBottom / 2;
-    heightBottom = 20;
-    
-    diameterRing = 18;
-    radiusRing = diameterRing / 2;
-    heightRing = 1.5;
-    
-    diameterButton = 11.7;
-    radiusButton = diameterButton / 2;
-    heightButton = (raised) ? 1.2 : 0;
-    
-    translate([0, 0, -heightBottom])
-        switchBase(
-            radiusBottom, heightBottom,
-            radiusRing, heightRing,
-            radiusButton, heightButton);
+module vandal16mm(switchColor="silver", holes=true, raised=false) {
+  diameterBottom = 16;
+  radiusBottom = diameterBottom / 2;
+  heightBottom = 20;
+
+  diameterRing = 18;
+  radiusRing = diameterRing / 2;
+  heightRing = 1.5;
+
+  diameterButton = 11.7;
+  radiusButton = diameterButton / 2;
+  heightButton = (raised) ? 1.2 : 0;
+
+  translate([0, 0, -heightBottom])
+    color(switchColor)
+      switchBase(
+        radiusBottom, heightBottom,
+        radiusRing, heightRing,
+        radiusButton, heightButton);
 }
 
-module vandal19mm(holes=true, raised=false) {
-    diameterBottom = 19;
-    radiusBottom = diameterBottom / 2;
-    heightBottom = 22.2;
-    
-    diameterRing = 22;
-    radiusRing = diameterRing / 2;
-    heightRing = 1.6;
-    
-    diameterButton = 15;
-    radiusButton = diameterButton / 2;
-    heightButton = (raised) ? 1.2 : 0;
-    
-    translate([0, 0, -heightBottom])
-        switchBase(
-            radiusBottom, heightBottom,
-            radiusRing, heightRing,
-            radiusButton, heightButton);
+module vandal19mm(switchColor="silver", holes=true, raised=false) {
+  diameterBottom = 19;
+  radiusBottom = diameterBottom / 2;
+  heightBottom = 22.2;
+
+  diameterRing = 22;
+  radiusRing = diameterRing / 2;
+  heightRing = 1.6;
+
+  diameterButton = 15;
+  radiusButton = diameterButton / 2;
+  heightButton = (raised) ? 1.2 : 0;
+
+  translate([0, 0, -heightBottom])
+    switchBase(
+      radiusBottom, heightBottom,
+      radiusRing, heightRing,
+      radiusButton, heightButton);
 }
 
 module switchBase(
@@ -132,19 +134,18 @@ module switchBase(
     radiusRing, heightRing,
     radiusButton, heightButton)
 {
-    group() {
-        cylinder(r=radiusBottom, h=heightBottom + 1);
+  group() {
+    cylinder(r=radiusBottom, h=heightBottom + 1);
 
-        translate([0, 0, heightBottom]) {
-            hull() {
-                cylinder(r=radiusRing, h=heightRing / 2);
-            
-                translate([0, 0, heightRing / 2])
-                    cylinder(r=radiusButton + 0.5, h=heightRing / 2);
-            }
-        }
-            
-        translate([0, 0, heightBottom + heightRing])
-            cylinder(r=radiusButton, h=heightButton);
-    }
+    translate([0, 0, heightBottom])
+      hull() {
+        cylinder(r=radiusRing, h=heightRing / 2);
+
+        translate([0, 0, heightRing / 2])
+          cylinder(r=radiusButton + 0.5, h=heightRing / 2);
+      }
+
+    translate([0, 0, heightBottom + heightRing])
+      cylinder(r=radiusButton, h=heightButton);
+  }
 }

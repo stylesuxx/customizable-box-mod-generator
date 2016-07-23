@@ -1,16 +1,16 @@
 module renderFull() {
   difference() {
     enclosure(boxType, part, boxColor);
-    
+
+    if(enableFireSwitch == "yes")
+      translate(posFireSwitch)
+        rotate(rotFireSwitch)
+          switch(fireSwitchType, boxColor, false);
+
     color(boxColor) {
       group() {
         translate(pos510)
           connector510(type_510_connector, false);
-
-        if(enableFireSwitch == "yes")
-          translate(posFireSwitch)
-            rotate(rotFireSwitch)
-              switch(fireSwitchType, false);
 
         if(enableVoltMeter == "yes")
           translate(posVoltMeter)
@@ -34,8 +34,7 @@ module visualisation() {
   if(enableFireSwitch == "yes")
     translate(posFireSwitch)
       rotate(rotFireSwitch)
-        color(fireSwitchColor)
-          switch(fireSwitchType);
+        switch(fireSwitchType, fireSwitchColor);
 
   if(enableVoltMeter == "yes")
     translate(posVoltMeter)
