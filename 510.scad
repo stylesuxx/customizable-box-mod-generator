@@ -7,8 +7,8 @@
  * + http://www.varitube.com/VT-510--Bottom-Feeding-510--Self-Adjusting-or-Manual_p_402.html
  */
 
-//connector510("varitube14mm");
 //connector510("varitube12mmBottomFeed");
+//connector510("varitube14mm");
 //connector510("varitube22mmBottomFeed");
 //connector510("varitube22mmV2Slotted");
 //connector510("varitube22mmV2Plain");
@@ -75,12 +75,13 @@ module varitube12mmBottomFeed(color510="silver", holes=true) {
   squonkDiameter = 3;
   squonkRadius = squonkDiameter / 2;
 
-  group() {
-    varitube12mm(holes);
+  color(color510)
+    group() {
+      varitube12mm(holes);
 
-    translate([0, 0, -12 - squonkHeight])
-      cylinder(r=squonkRadius, h=squonkHeight);
-  }
+      translate([0, 0, -12 - squonkHeight])
+        cylinder(r=squonkRadius, h=squonkHeight);
+    }
 }
 
 module varitube22mmBottomFeed(color510="silver", holes=true) {
@@ -88,12 +89,13 @@ module varitube22mmBottomFeed(color510="silver", holes=true) {
   squonkDiameter = 3;
   squonkRadius = squonkDiameter / 2;
 
-  group() {
-    varitube22mmV2(holes, false);
+  color(color510)
+    group() {
+      varitube22mmV2(color510, holes, false);
 
-    translate([0, 0, -10 - squonkHeight])
-      cylinder(r=squonkRadius, h=squonkHeight);
-  }
+      translate([0, 0, -10 - squonkHeight])
+        cylinder(r=squonkRadius, h=squonkHeight);
+    }
 }
 
 module varitube22mmV2Flat(color510="silver", holes=true) {
