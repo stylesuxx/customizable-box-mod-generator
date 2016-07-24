@@ -123,10 +123,11 @@ module vandal19mm(switchColor="silver", holes=true, raised=false) {
   heightButton = (raised) ? 1.2 : 0;
 
   translate([0, 0, -heightBottom])
-    switchBase(
-      radiusBottom, heightBottom,
-      radiusRing, heightRing,
-      radiusButton, heightButton);
+    color(switchColor)
+      switchBase(
+        radiusBottom, heightBottom,
+        radiusRing, heightRing,
+        radiusButton, heightButton);
 }
 
 module switchBase(
