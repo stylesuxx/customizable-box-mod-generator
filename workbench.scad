@@ -1,4 +1,5 @@
 include <510.scad>;
+include <pcb.scad>;
 include <sled.scad>;
 include <switch.scad>;
 include <display.scad>;
@@ -99,6 +100,27 @@ yRotateSled = 90; // [0:360]
 // z rotation
 zRotateSled = 0; // [0:360]
 
+/* [PCB] */
+
+// Enable a pcb?
+enablePcb = "yes"; // [yes, no]
+// Select PCB
+pcbType = "raptor10a"; // [raptor10a: Naos Raptor 10A, raptor20a: Naos Raptor 20A]
+
+// x offset from the center
+xOffsetPcb = -21.4; // [-100:0.1:100]
+// y offset from the center
+yOffsetPcb = 0; // [-100:0.1:100]
+// z offset from the bottom
+zOffsetPcb = 90; // [-200:0.1:200]
+
+// x rotation
+xRotatePcb = 90; // [0:360]
+// y rotation
+yRotatePcb = 0; // [0:360]
+// z rotation
+zRotatePcb = 270; // [0:360]
+
 /* [View Mode] */
 
 // If visualisation is enabled, the parts are rendered
@@ -117,11 +139,13 @@ pos510 = [xOffset_510, yOffset_510, zOffset_510];
 posFireSwitch = [xOffsetFireSwitch, yOffsetFireSwitch, zOffsetFireSwitch];
 posVoltMeter = [xOffsetVoltMeter, yOffsetVoltMeter, zOffsetVoltMeter];
 posSled = [xOffsetSled, yOffsetSled, zOffsetSled];
+posPcb = [xOffsetPcb, yOffsetPcb, zOffsetPcb];
 
 rot510 = [xRotate_510, yRotate_510, zRotate_510];
 rotFireSwitch = [xRotateFireSwitch, yRotateFireSwitch, zRotateFireSwitch];
 rotVoltMeter = [xRotateVoltMeter, yRotateVoltMeter, zRotateVoltMeter];
 rotSled = [xRotateSled, yRotateSled, zRotateSled];
+rotPcb = [xRotatePcb, yRotatePcb, zRotatePcb];
 
 /**
  * To activate animation:

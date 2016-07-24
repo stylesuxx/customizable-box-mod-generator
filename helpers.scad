@@ -20,6 +20,11 @@ module renderFull() {
       translate(posSled)
         rotate(rotSled)
           sled(sledType, boxColor, false);
+
+    if(enablePcb == "yes")
+      translate(posPcb)
+        rotate(rotPcb)
+          pcb(pcbType, false);
   }
 }
 
@@ -42,4 +47,9 @@ module visualisation() {
     translate(posSled)
       rotate(rotSled)
         sled(sledType, sledColor);
+
+  if(enablePcb == "yes")
+      translate(posPcb)
+        rotate(rotPcb)
+          pcb(pcbType);
 }

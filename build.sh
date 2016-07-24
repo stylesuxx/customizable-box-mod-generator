@@ -1,2 +1,2 @@
 #!/bin/bash
-cat workbench.scad helpers.scad 510.scad display.scad enclosure.scad switch.scad sled.scad > box_mod.scad
+cat workbench.scad helpers.scad 510.scad enclosure.scad display.scad switch.scad sled.scad pcb.scad > box_mod.scad
