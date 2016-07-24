@@ -5,8 +5,16 @@
  * + Naos Raptor 10A: http://apps.geindustrial.com/publibrary/checkout/NSR020A0X?TNR=Data%20Sheets|NSR020A0X|generic
  */
 
-//raptor10a();
-//raptor20a();
+//pcb("raptor10a");
+//pcb("raptor20a");
+
+module pcb(type, holes=true) {
+  if(type == "raptor10a")
+    raptor10a(holes);
+
+  if(type == "raptor20a")
+      raptor20a(holes);
+}
 
 module raptor20a() {
   length= 36.8;
