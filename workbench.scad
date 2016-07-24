@@ -84,8 +84,6 @@ zRotateVoltMeter = 0; // [0:360]
 enableSled = "yes"; // [yes, no]
 // Select your volt meter type
 sledType = "keystone1048"; // [keystone1042: Keystone single 18650 Single (1042), keystone1048: Keystone dual 18650 (1048)]
-// Select color of the volt meter
-sledColor = "black"; // [white: White, gray: Gray, silver:Silver, black:Black]
 
 // x offset from the center
 xOffsetSled = 0; // [-100:0.1:100]
@@ -109,6 +107,7 @@ visualize = "yes"; // [yes, no]
 part = "both"; // [both, body, lid]
 
 /* [Hidden] */
+sledColor = "black";
 voltMeterColor = "white";
 
 // Resolution for roundness: higher -> rounder edges -> longer render time
