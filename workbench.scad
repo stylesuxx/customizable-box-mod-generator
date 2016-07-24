@@ -27,6 +27,13 @@ yOffset_510 = 0; // [-100:0.1:100]
 // z offset from the bottom
 zOffset_510 = 112.4; // [-200:0.1:200]
 
+// x rotation
+xRotate_510 = 0; // [0:360]
+// y rotation
+yRotate_510 = 0; // [0:360]
+// z rotation
+zRotate_510 = 0; // [0:360]
+
 /* [Fire Switch] */
 
 // Enable a fire switch?
@@ -55,9 +62,7 @@ zRotateFireSwitch = 0; // [0:360]
 // Enable the volt meter?
 enableVoltMeter = "yes"; // [yes, no]
 // Select your volt meter type
-voltMeterType = "seedVoltMeter"; // [seedVoltMeter: Seed Volt Meter Green, seedVoltMeter: Seed Volt Meter Red]
-// Select color of the volt meter
-voltMeterColor = "white"; // [white: White, gray: Gray, silver:Silver, black:Black]
+voltMeterType = "seedVoltMeterGreen"; // [seedVoltMeterGreen: Seed Volt Meter Green, seedVoltMeteryellow: Seed Volt Meter Yellow, seedVoltMeterRed: Seed Volt Meter Red]
 
 // x offset from the center
 xOffsetVoltMeter = 0; // [-100:0.1:100]
@@ -69,7 +74,7 @@ zOffsetVoltMeter = 90; // [-200:0.1:200]
 // x rotation
 xRotateVoltMeter = 270; // [0:360]
 // y rotation
-yRotateVoltMeter = 0; // [0:360]
+yRotateVoltMeter = 180; // [0:360]
 // z rotation
 zRotateVoltMeter = 0; // [0:360]
 
@@ -104,6 +109,8 @@ visualize = "yes"; // [yes, no]
 part = "both"; // [both, body, lid]
 
 /* [Hidden] */
+voltMeterColor = "white";
+
 // Resolution for roundness: higher -> rounder edges -> longer render time
 $fn = 36;
 
@@ -112,6 +119,7 @@ posFireSwitch = [xOffsetFireSwitch, yOffsetFireSwitch, zOffsetFireSwitch];
 posVoltMeter = [xOffsetVoltMeter, yOffsetVoltMeter, zOffsetVoltMeter];
 posSled = [xOffsetSled, yOffsetSled, zOffsetSled];
 
+rot510 = [xRotate_510, yRotate_510, zRotate_510];
 rotFireSwitch = [xRotateFireSwitch, yRotateFireSwitch, zRotateFireSwitch];
 rotVoltMeter = [xRotateVoltMeter, yRotateVoltMeter, zRotateVoltMeter];
 rotSled = [xRotateSled, yRotateSled, zRotateSled];
