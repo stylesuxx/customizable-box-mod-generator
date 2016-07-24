@@ -2,9 +2,30 @@
  * Available PCB's:
  * 
  * + Naos Raptor 10A: https://media.digikey.com/pdf/Data%20Sheets/Lineage%20Power/Naos_Raptor_10A.pdf
+ * + Naos Raptor 10A: http://apps.geindustrial.com/publibrary/checkout/NSR020A0X?TNR=Data%20Sheets|NSR020A0X|generic
  */
 
 //raptor10a();
+//raptor20a();
+
+module raptor20a() {
+  length= 36.8;
+  width = 15.5;
+  height = 9.2;
+
+  pcbHeight = 1.5;
+  componentHeight = height - pcbHeight;
+
+  translate([-length / 2, -width / 2, 0])
+    group() {
+      color("green")
+        cube([length, width, pcbHeight]);
+
+      translate([length -15 -3, width - 11.5, pcbHeight])
+        color("black")
+          cube([15, 10, componentHeight]);
+    }
+}
 
 module raptor10a() {
   length= 10.4;
