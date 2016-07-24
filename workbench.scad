@@ -1,10 +1,4 @@
-include <510.scad>;
-include <pcb.scad>;
-include <sled.scad>;
-include <switch.scad>;
-include <display.scad>;
 include <helpers.scad>;
-include <enclosure.scad>;
 
 /* [Enclosure] */
 
@@ -121,6 +115,48 @@ yRotatePcb = 0; // [0:360]
 // z rotation
 zRotatePcb = 270; // [0:360]
 
+/* [Squonker] */
+
+// Enable squonker?
+enableSquonk = "no"; // [yes, no]
+// Select Bottle type
+squonkType = "fdv18mm"; // [fdv18mm: Fat Daddy Vapes 18mm round, raptor20a: Naos Raptor 20A]
+
+// x offset from the center
+xOffsetSquonk = -50; // [-100:0.1:100]
+// y offset from the center
+yOffsetSquonk = 0; // [-100:0.1:100]
+// z offset from the bottom
+zOffsetSquonk = 0; // [-200:0.1:200]
+
+// x rotation
+xRotateSquonk = 0; // [0:360]
+// y rotation
+yRotateSquonk = 0; // [0:360]
+// z rotation
+zRotateSquonk = 0; // [0:360]
+
+// height
+squonkCutoutHeight = 45; // [1:200]
+// width
+squonkCutoutWidth = 23; // [1:200]
+// depth
+squonkCutoutDepth = 5; // [1:200]
+
+// x offset from the center
+xOffsetSquonkCutout = 10; // [-100:0.1:100]
+// y offset from the center
+yOffsetSquonkCutout = -13.5; // [-100:0.1:100]
+// z offset from the bottom
+zOffsetSquonkCutout = 30; // [-200:0.1:200]
+
+// x rotation
+xRotateSquonkCutout = 0; // [0:360]
+// y rotation
+yRotateSquonkCutout = 0; // [0:360]
+// z rotation
+zRotateSquonkCutout = 0; // [0:360]
+
 /* [View Mode] */
 
 // If visualisation is enabled, the parts are rendered
@@ -140,12 +176,16 @@ posFireSwitch = [xOffsetFireSwitch, yOffsetFireSwitch, zOffsetFireSwitch];
 posVoltMeter = [xOffsetVoltMeter, yOffsetVoltMeter, zOffsetVoltMeter];
 posSled = [xOffsetSled, yOffsetSled, zOffsetSled];
 posPcb = [xOffsetPcb, yOffsetPcb, zOffsetPcb];
+posSquonk = [xOffsetSquonk, yOffsetSquonk, zOffsetSquonk];
+posSquonkCutout = [xOffsetSquonkCutout, yOffsetSquonkCutout, zOffsetSquonkCutout];
 
 rot510 = [xRotate_510, yRotate_510, zRotate_510];
 rotFireSwitch = [xRotateFireSwitch, yRotateFireSwitch, zRotateFireSwitch];
 rotVoltMeter = [xRotateVoltMeter, yRotateVoltMeter, zRotateVoltMeter];
 rotSled = [xRotateSled, yRotateSled, zRotateSled];
 rotPcb = [xRotatePcb, yRotatePcb, zRotatePcb];
+rotSquonk = [xRotateSquonk, yRotateSquonk, zRotateSquonk];
+rotSquonkCutout = [xRotateSquonkCutout, yRotateSquonkCutout, zRotateSquonkCutout];
 
 /**
  * To activate animation:

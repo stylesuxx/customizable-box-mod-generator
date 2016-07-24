@@ -1,3 +1,12 @@
+include <510.scad>;
+include <pcb.scad>;
+include <sled.scad>;
+include <switch.scad>;
+include <bottle.scad>;
+include <cutout.scad>;
+include <display.scad>;
+include <enclosure.scad>;
+
 module renderFull() {
   difference() {
     enclosure(boxType, part, boxColor);
@@ -25,6 +34,17 @@ module renderFull() {
       translate(posPcb)
         rotate(rotPcb)
           pcb(pcbType, false);
+
+    if(enableSquonk == "yes") {
+      translate(posSquonkCutout)
+        rotate(rotSquonkCutout)
+          color(boxColor)
+            elliptic(squonkCutoutHeight, squonkCutoutWidth, squonkCutoutDepth);
+
+      translate(posSquonk)
+        rotate(rotSquonk)
+            bottle(squonkType, boxColor, false);
+    }
   }
 }
 
@@ -49,7 +69,17 @@ module visualisation() {
         sled(sledType, sledColor);
 
   if(enablePcb == "yes")
-      translate(posPcb)
-        rotate(rotPcb)
-          pcb(pcbType);
+    translate(posPcb)
+      rotate(rotPcb)
+        pcb(pcbType);
+
+  if(enableSquonk == "yes") {
+    translate(posSquonkCutout)
+      rotate(rotSquonkCutout)
+        #elliptic(squonkCutoutHeight, squonkCutoutWidth, squonkCutoutDepth);
+
+    translate(posSquonk)
+      rotate(rotSquonk)
+        bottle(squonkType);
+  }
 }
