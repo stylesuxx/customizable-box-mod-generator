@@ -9,10 +9,10 @@
  */
  //$fn = 36;
  
- //enclosure("hammond1550a", "both", "grey");
- //enclosure("hammond1590a", "both", "grey");
- //enclosure("hammond1590b", "both", "grey");
- //enclosure("hammond1590g", "both", "grey");
+//enclosure("hammond1550a", "both", "grey");
+//enclosure("hammond1590a", "both", "grey");
+//enclosure("hammond1590b", "both", "grey");
+//enclosure("hammond1590g", "both", "grey");
  
 module enclosure(type, part, boxColor) {
   if(type == "hammond1550a")
@@ -31,7 +31,7 @@ module enclosure(type, part, boxColor) {
 module hammond1550a(part="both", boxColor="grey") {
   outerLength = 89;
   outerWidth = 35;
-  bodyHeight = 26;
+  outerHeight = 30.1;
   lidHeight = 4;
 
   innerLength = 86;
@@ -47,7 +47,7 @@ module hammond1550a(part="both", boxColor="grey") {
   outerDiameter = 4;
 
   hammond(
-    outerLength, outerWidth, bodyHeight, lidHeight,
+    outerLength, outerWidth, outerHeight, lidHeight,
     innerLength, innerWidth, innerHeight,
     postWidth, holeDiameter, xOffsetHole, yOffsetHole,
     outerDiameter,
@@ -59,7 +59,6 @@ module hammond1590a(part="both", boxColor="grey") {
   outerWidth = 38.5;
   outerHeight = 31;
   lidHeight = 4;
-  bodyHeight = outerHeight - lidHeight;
 
   innerLength = 89.10;
   innerWidth = 35;
@@ -74,7 +73,7 @@ module hammond1590a(part="both", boxColor="grey") {
   outerDiameter = 4;
 
   hammond(
-    outerLength, outerWidth, bodyHeight, lidHeight,
+    outerLength, outerWidth, outerHeight, lidHeight,
     innerLength, innerWidth, innerHeight,
     postWidth, holeDiameter, xOffsetHole, yOffsetHole,
     outerDiameter,
@@ -86,7 +85,6 @@ module hammond1590b(part="both", boxColor="grey") {
   outerWidth = 60.5;
   outerHeight = 31;
   lidHeight = 4;
-  bodyHeight = outerHeight - lidHeight;
 
   innerLength = 108.1;
   innerWidth = 56.5;
@@ -101,7 +99,7 @@ module hammond1590b(part="both", boxColor="grey") {
   outerDiameter = 4;
 
   hammond(
-    outerLength, outerWidth, bodyHeight, lidHeight,
+    outerLength, outerWidth, outerHeight, lidHeight,
     innerLength, innerWidth, innerHeight,
     postWidth, holeDiameter, xOffsetHole, yOffsetHole,
     outerDiameter,
@@ -113,7 +111,6 @@ module hammond1590g(part="both", boxColor="grey") {
   outerWidth = 50;
   outerHeight = 25;
   lidHeight = 4;
-  bodyHeight = outerHeight - lidHeight;
 
   innerLength = 96.2;
   innerWidth = 46.2;
@@ -128,7 +125,7 @@ module hammond1590g(part="both", boxColor="grey") {
   outerDiameter = 4;
 
   hammond(
-    outerLength, outerWidth, bodyHeight, lidHeight,
+    outerLength, outerWidth, outerHeight, lidHeight,
     innerLength, innerWidth, innerHeight,
     postWidth, holeDiameter, xOffsetHole, yOffsetHole,
     outerDiameter,
@@ -136,7 +133,7 @@ module hammond1590g(part="both", boxColor="grey") {
 }
 
 module hammond(
-  outerLength, outerWidth, bodyHeight, lidHeight,
+  outerLength, outerWidth, outerHeight, lidHeight,
   innerLength, innerWidth, innerHeight,
   postWidth, holeDiameter, xOffsetHole, yOffsetHole,
   outerDiameter,
@@ -144,10 +141,11 @@ module hammond(
 {
   holeRadius = holeDiameter / 2;
   outerRadius = outerDiameter / 2;
+  bodyHeight = outerHeight - lidHeight;
 
   xOffset = (outerLength - innerLength) / 2;
   yOffset = (outerWidth - innerWidth) / 2;
-  zOffset = bodyHeight - innerHeight;
+  zOffset = (outerHeight - innerHeight) / 2;
 
   xOffsetLid = outerWidth / 2;
   yOffsetLid = -(bodyHeight + lidHeight) / 2;
@@ -186,12 +184,12 @@ module hammond(
       difference() {
         union() {
           roundedBody(lidHeight);
-          translate([0, 0, -zOffset + 0.1])
-            screwPosts(lidHeight + zOffset - 0.1);
+          translate([0, 0, zOffset])
+            screwPosts(lidHeight - zOffset);
         }
 
-        translate([0, 0, 2])
-          screwHoles(lidHeight);
+        translate([0, 0, zOffset])
+          screwHoles(lidHeight - zOffset);
       }
 
       cube(0); // So wer are able to group
@@ -203,12 +201,12 @@ module hammond(
       difference() {
         group() {
           roundedBody(bodyHeight);
-          translate([0, 0, -zOffset + 0.1])
-            screwPosts(bodyHeight + zOffset - 0.1);
+          translate([0, 0, zOffset])
+            screwPosts(bodyHeight - zOffset);
         }
 
-        translate([0, 0, -zOffset + 1])
-          screwHoles(bodyHeight);
+        translate([0, 0, zOffset])
+          screwHoles(bodyHeight - zOffset);
       }
 
       cube(0); // So wer are able to group
