@@ -3,10 +3,10 @@ include <helpers.scad>;
 /* [Enclosure] */
 
 // Select type of enclosure
-boxType = "hammond1590b"; // [hammond1550a: Hammond 1550A, hammond1590a: Hammond 1590A, hammond1590b: Hammond 1590B, hammond1590g: Hammond 1590G]
+boxType = "hammond1590b"; // [hammond1550a: Hammond 1550A, hammond1550b: Hammond 1550B,hammond1550p: Hammond 1550P,hammond1550q: Hammond 1550Q, hammond1590a: Hammond 1590A, hammond1590b: Hammond 1590B, hammond1590g: Hammond 1590G]
 
 // Select color of the enclosure
-boxColor = "gray"; // [gray, silver, black]
+boxColor = "gray"; // [gray, silver, black, blue, green, lightgray, orange, purple, red, yellow]
 
 /* [510 connector] */
 
