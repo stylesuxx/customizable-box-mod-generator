@@ -4,6 +4,9 @@
  * Hammond:
  * + http://www.hammondmfg.com/pdf/1550A.pdf
  * + http://www.hammondmfg.com/pdf/1550B.pdf
+ * + http://www.hammondmfg.com/pdf/1550P.pdf
+ * + http://www.hammondmfg.com/pdf/1550Q.pdf
+ *
  * + http://www.hammondmfg.com/pdf/1550C.pdf
  * + http://www.hammondmfg.com/pdf/1550D.pdf
  * + http://www.hammondmfg.com/pdf/1550E.pdf
@@ -12,15 +15,23 @@
  * + http://www.hammondmfg.com/pdf/1550H.pdf
  * + http://www.hammondmfg.com/pdf/1550J.pdf
  * + http://www.hammondmfg.com/pdf/1550K.pdf
+ * + http://www.hammondmfg.com/pdf/1550L.pdf
+ * + http://www.hammondmfg.com/pdf/1550M.pdf
+ * + http://www.hammondmfg.com/pdf/1550N.pdf
  *
  * + http://www.hammondmfg.com/pdf/1590A.pdf
  * + http://www.hammondmfg.com/pdf/1590B.pdf
+ * + http://www.hammondmfg.com/pdf/1590BS.pdf
  * + http://www.hammondmfg.com/pdf/1590G.pdf
  */
  //$fn = 36;
  
 //enclosure("hammond1550a", "both", "grey");
 //enclosure("hammond1550b", "both", "grey");
+//enclosure("hammond1550p", "both", "grey");
+//enclosure("hammond1550q", "both", "grey");
+
+/* TODO: The following do not have straight bodies */
 //enclosure("hammond1550c", "both", "grey");
 //enclosure("hammond1550d", "both", "grey");
 //enclosure("hammond1550e", "both", "grey");
@@ -32,8 +43,6 @@
 //enclosure("hammond1550l", "both", "grey");
 //enclosure("hammond1550m", "both", "grey");
 //enclosure("hammond1550n", "both", "grey");
-//enclosure("hammond1550p", "both", "grey");
-//enclosure("hammond1550q", "both", "grey");
 
 //enclosure("hammond1590a", "both", "grey");
 //enclosure("hammond1590b", "both", "grey");
@@ -45,39 +54,6 @@ module enclosure(type, part, boxColor="grey") {
 
   if(type == "hammond1550b")
     hammond1550b(part, boxColor);
-
-  if(type == "hammond1550c")
-    hammond1550c(part, boxColor);
-
-  if(type == "hammond1550d")
-    hammond1550d(part, boxColor);
-
-  if(type == "hammond1550e")
-    hammond1550e(part, boxColor);
-
-  if(type == "hammond1550f")
-    hammond1550f(part, boxColor);
-
-  if(type == "hammond1550g")
-    hammond1550g(part, boxColor);
-
-  if(type == "hammond1550h")
-    hammond1550h(part, boxColor);
-
-  if(type == "hammond1550j")
-    hammond1550j(part, boxColor);
-
-  if(type == "hammond1550k")
-    hammond1550k(part, boxColor);
-
-  if(type == "hammond1550l")
-    hammond1550l(part, boxColor);
-
-  if(type == "hammond1550m")
-    hammond1550m(part, boxColor);
-
-  if(type == "hammond1550n")
-    hammond1550n(part, boxColor);
 
   if(type == "hammond1550p")
     hammond1550p(part, boxColor);
