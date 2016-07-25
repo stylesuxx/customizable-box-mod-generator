@@ -57,7 +57,7 @@ zRotateFireSwitch = 0; // [0:360]
 // Enable the volt meter?
 enableVoltMeter = "yes"; // [yes, no]
 // Select your volt meter type
-voltMeterType = "seedVoltMeterGreen"; // [seedVoltMeterGreen: Seed Volt Meter Green, seedVoltMeteryellow: Seed Volt Meter Yellow, seedVoltMeterRed: Seed Volt Meter Red]
+voltMeterType = "seedVoltMeterGreen"; // [seedVoltMeterGreen: Seed Volt Meter Green, seedVoltMeteryellow: Seed Volt Meter Yellow, seedVoltMeterRed: Seed Volt Meter Red, seedVoltMeterBlue: Seed Volt Meter Blue]
 
 // x offset from the center
 xOffsetVoltMeter = 0; // [-100:0.1:100]

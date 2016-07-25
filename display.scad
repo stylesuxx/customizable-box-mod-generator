@@ -18,6 +18,9 @@ module display(type, displayColor="white", holes=true) {
 
   if(type == "seedVoltMeterRed")
     seedVoltMeter(displayColor, "red", holes);
+
+  if(type == "seedVoltMeterBlue")
+    seedVoltMeter(displayColor, "blue", holes);
 }
 
 module seedVoltMeter(displayColor="white", ledColor="green", holes=true) {
