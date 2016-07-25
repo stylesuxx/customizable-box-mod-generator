@@ -3,6 +3,16 @@
  *
  * Hammond:
  * + http://www.hammondmfg.com/pdf/1550A.pdf
+ * + http://www.hammondmfg.com/pdf/1550B.pdf
+ * + http://www.hammondmfg.com/pdf/1550C.pdf
+ * + http://www.hammondmfg.com/pdf/1550D.pdf
+ * + http://www.hammondmfg.com/pdf/1550E.pdf
+ * + http://www.hammondmfg.com/pdf/1550F.pdf
+ * + http://www.hammondmfg.com/pdf/1550G.pdf
+ * + http://www.hammondmfg.com/pdf/1550H.pdf
+ * + http://www.hammondmfg.com/pdf/1550J.pdf
+ * + http://www.hammondmfg.com/pdf/1550K.pdf
+ *
  * + http://www.hammondmfg.com/pdf/1590A.pdf
  * + http://www.hammondmfg.com/pdf/1590B.pdf
  * + http://www.hammondmfg.com/pdf/1590G.pdf
@@ -10,13 +20,70 @@
  //$fn = 36;
  
 //enclosure("hammond1550a", "both", "grey");
+//enclosure("hammond1550b", "both", "grey");
+//enclosure("hammond1550c", "both", "grey");
+//enclosure("hammond1550d", "both", "grey");
+//enclosure("hammond1550e", "both", "grey");
+//enclosure("hammond1550f", "both", "grey");
+//enclosure("hammond1550g", "both", "grey");
+//enclosure("hammond1550h", "both", "grey");
+//enclosure("hammond1550j", "both", "grey");
+//enclosure("hammond1550k", "both", "grey");
+//enclosure("hammond1550l", "both", "grey");
+//enclosure("hammond1550m", "both", "grey");
+//enclosure("hammond1550n", "both", "grey");
+//enclosure("hammond1550p", "both", "grey");
+//enclosure("hammond1550q", "both", "grey");
+
 //enclosure("hammond1590a", "both", "grey");
 //enclosure("hammond1590b", "both", "grey");
 //enclosure("hammond1590g", "both", "grey");
  
-module enclosure(type, part, boxColor) {
+module enclosure(type, part, boxColor="grey") {
   if(type == "hammond1550a")
     hammond1550a(part, boxColor);
+
+  if(type == "hammond1550b")
+    hammond1550b(part, boxColor);
+
+  if(type == "hammond1550c")
+    hammond1550c(part, boxColor);
+
+  if(type == "hammond1550d")
+    hammond1550d(part, boxColor);
+
+  if(type == "hammond1550e")
+    hammond1550e(part, boxColor);
+
+  if(type == "hammond1550f")
+    hammond1550f(part, boxColor);
+
+  if(type == "hammond1550g")
+    hammond1550g(part, boxColor);
+
+  if(type == "hammond1550h")
+    hammond1550h(part, boxColor);
+
+  if(type == "hammond1550j")
+    hammond1550j(part, boxColor);
+
+  if(type == "hammond1550k")
+    hammond1550k(part, boxColor);
+
+  if(type == "hammond1550l")
+    hammond1550l(part, boxColor);
+
+  if(type == "hammond1550m")
+    hammond1550m(part, boxColor);
+
+  if(type == "hammond1550n")
+    hammond1550n(part, boxColor);
+
+  if(type == "hammond1550p")
+    hammond1550p(part, boxColor);
+
+  if(type == "hammond1550q")
+    hammond1550q(part, boxColor);
 
   if(type == "hammond1590a")
     hammond1590a(part, boxColor);
@@ -37,6 +104,370 @@ module hammond1550a(part="both", boxColor="grey") {
   innerLength = 86;
   innerWidth = 32;
   innerHeight = 27.1;
+
+  postWidth = 6.5;
+  holeDiameter = 3.5;
+
+  xOffsetHole = 5;
+  yOffsetHole = 5;
+
+  outerDiameter = 4;
+
+  hammond(
+    outerLength, outerWidth, outerHeight, lidHeight,
+    innerLength, innerWidth, innerHeight,
+    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
+    outerDiameter,
+    part, boxColor);
+}
+
+module hammond1550b(part="both", boxColor="grey") {
+  outerLength = 114.50;
+  outerWidth = 64;
+  outerHeight = 30.1;
+  lidHeight = 4;
+
+  innerLength = 111.50;
+  innerWidth = 60.58;
+  innerHeight = 27.1;
+
+  postWidth = 6.5;
+  holeDiameter = 3.5;
+
+  xOffsetHole = 5;
+  yOffsetHole = 5;
+
+  outerDiameter = 4;
+
+  hammond(
+    outerLength, outerWidth, outerHeight, lidHeight,
+    innerLength, innerWidth, innerHeight,
+    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
+    outerDiameter,
+    part, boxColor);
+}
+
+module hammond1550c(part="both", boxColor="grey") {
+  outerLength = 115;
+  outerWidth = 90;
+  outerHeight = 55.1;
+  lidHeight = 4;
+
+  innerLength = 111.40;
+  innerWidth = 86.4;
+  innerHeight = 51.8;
+
+  postWidth = 6.5;
+  holeDiameter = 3.5;
+
+  xOffsetHole = 5;
+  yOffsetHole = 5;
+
+  outerDiameter = 4;
+
+  hammond(
+    outerLength, outerWidth, outerHeight, lidHeight,
+    innerLength, innerWidth, innerHeight,
+    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
+    outerDiameter,
+    part, boxColor);
+}
+
+module hammond1550d(part="both", boxColor="grey") {
+  outerLength = 114.5;
+  outerWidth = 64;
+  outerHeight = 55.1;
+  lidHeight = 4;
+
+  innerLength = 110.90;
+  innerWidth = 60.4;
+  innerHeight = 52.1;
+
+  postWidth = 6.5;
+  holeDiameter = 3.5;
+
+  xOffsetHole = 5;
+  yOffsetHole = 5;
+
+  outerDiameter = 4;
+
+  hammond(
+    outerLength, outerWidth, outerHeight, lidHeight,
+    innerLength, innerWidth, innerHeight,
+    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
+    outerDiameter,
+    part, boxColor);
+}
+
+module hammond1550e(part="both", boxColor="grey") {
+  outerLength = 171;
+  outerWidth = 121;
+  outerHeight = 55.1;
+  lidHeight = 4;
+
+  innerLength = 167;
+  innerWidth = 117;
+  innerHeight = 51.1;
+
+  postWidth = 6.5;
+  holeDiameter = 3.5;
+
+  xOffsetHole = 5;
+  yOffsetHole = 5;
+
+  outerDiameter = 4;
+
+  hammond(
+    outerLength, outerWidth, outerHeight, lidHeight,
+    innerLength, innerWidth, innerHeight,
+    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
+    outerDiameter,
+    part, boxColor);
+}
+
+module hammond1550f(part="both", boxColor="grey") {
+  outerLength = 171;
+  outerWidth = 121;
+  outerHeight = 105.1;
+  lidHeight = 4;
+
+  innerLength = 167;
+  innerWidth = 117;
+  innerHeight = 101.1;
+
+  postWidth = 6.5;
+  holeDiameter = 3.5;
+
+  xOffsetHole = 5;
+  yOffsetHole = 5;
+
+  outerDiameter = 4;
+
+  hammond(
+    outerLength, outerWidth, outerHeight, lidHeight,
+    innerLength, innerWidth, innerHeight,
+    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
+    outerDiameter,
+    part, boxColor);
+}
+
+module hammond1550g(part="both", boxColor="grey") {
+  outerLength = 222;
+  outerWidth = 146;
+  outerHeight = 55.1;
+  lidHeight = 4;
+
+  innerLength = 218;
+  innerWidth = 142;
+  innerHeight = 51.1;
+
+  postWidth = 6.5;
+  holeDiameter = 3.5;
+
+  xOffsetHole = 5;
+  yOffsetHole = 5;
+
+  outerDiameter = 4;
+
+  hammond(
+    outerLength, outerWidth, outerHeight, lidHeight,
+    innerLength, innerWidth, innerHeight,
+    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
+    outerDiameter,
+    part, boxColor);
+}
+
+module hammond1550h(part="both", boxColor="grey") {
+  outerLength = 222;
+  outerWidth = 146;
+  outerHeight = 105.1;
+  lidHeight = 4;
+
+  innerLength = 218;
+  innerWidth = 142;
+  innerHeight = 101.1;
+
+  postWidth = 6.5;
+  holeDiameter = 3.5;
+
+  xOffsetHole = 5;
+  yOffsetHole = 5;
+
+  outerDiameter = 4;
+
+  hammond(
+    outerLength, outerWidth, outerHeight, lidHeight,
+    innerLength, innerWidth, innerHeight,
+    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
+    outerDiameter,
+    part, boxColor);
+}
+
+module hammond1550j(part="both", boxColor="grey") {
+  outerLength = 275;
+  outerWidth = 175;
+  outerHeight = 66.6;
+  lidHeight = 4;
+
+  innerLength = 270;
+  innerWidth = 170;
+  innerHeight = 61.6;
+
+  postWidth = 6.5;
+  holeDiameter = 3.5;
+
+  xOffsetHole = 5;
+  yOffsetHole = 5;
+
+  outerDiameter = 4;
+
+  hammond(
+    outerLength, outerWidth, outerHeight, lidHeight,
+    innerLength, innerWidth, innerHeight,
+    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
+    outerDiameter,
+    part, boxColor);
+}
+
+module hammond1550k(part="both", boxColor="grey") {
+  outerLength = 140;
+  outerWidth = 102;
+  outerHeight = 76.6;
+  lidHeight = 4;
+
+  innerLength = 136;
+  innerWidth = 98;
+  innerHeight = 73.3;
+
+  postWidth = 6.5;
+  holeDiameter = 3.5;
+
+  xOffsetHole = 5;
+  yOffsetHole = 5;
+
+  outerDiameter = 4;
+
+  hammond(
+    outerLength, outerWidth, outerHeight, lidHeight,
+    innerLength, innerWidth, innerHeight,
+    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
+    outerDiameter,
+    part, boxColor);
+}
+
+module hammond1550l(part="both", boxColor="grey") {
+  outerLength = 165;
+  outerWidth = 127.4;
+  outerHeight = 76.5;
+  lidHeight = 4;
+
+  innerLength = 159.9;
+  innerWidth = 123.4;
+  innerHeight = 72.5;
+
+  postWidth = 6.5;
+  holeDiameter = 3.5;
+
+  xOffsetHole = 5;
+  yOffsetHole = 5;
+
+  outerDiameter = 4;
+
+  hammond(
+    outerLength, outerWidth, outerHeight, lidHeight,
+    innerLength, innerWidth, innerHeight,
+    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
+    outerDiameter,
+    part, boxColor);
+}
+
+module hammond1550m(part="both", boxColor="grey") {
+  outerLength = 120.4;
+  outerWidth = 100.4;
+  outerHeight = 35.37;
+  lidHeight = 4;
+
+  innerLength = 116.8;
+  innerWidth = 96.8;
+  innerHeight = 32.1;
+
+  postWidth = 6.5;
+  holeDiameter = 3.5;
+
+  xOffsetHole = 5;
+  yOffsetHole = 5;
+
+  outerDiameter = 4;
+
+  hammond(
+    outerLength, outerWidth, outerHeight, lidHeight,
+    innerLength, innerWidth, innerHeight,
+    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
+    outerDiameter,
+    part, boxColor);
+}
+
+module hammond1550n(part="both", boxColor="grey") {
+  outerLength = 250.1;
+  outerWidth = 250.2;
+  outerHeight = 101.3;
+  lidHeight = 4;
+
+  innerLength = 245.2;
+  innerWidth = 245.2;
+  innerHeight = 96.3;
+
+  postWidth = 6.5;
+  holeDiameter = 3.5;
+
+  xOffsetHole = 5;
+  yOffsetHole = 5;
+
+  outerDiameter = 4;
+
+  hammond(
+    outerLength, outerWidth, outerHeight, lidHeight,
+    innerLength, innerWidth, innerHeight,
+    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
+    outerDiameter,
+    part, boxColor);
+}
+
+module hammond1550p(part="both", boxColor="grey") {
+  outerLength = 80.1;
+  outerWidth = 55.2;
+  outerHeight = 25.1;
+  lidHeight = 4;
+
+  innerLength = 78.5;
+  innerWidth = 52;
+  innerHeight = 22.1;
+
+  postWidth = 6.5;
+  holeDiameter = 3.5;
+
+  xOffsetHole = 5;
+  yOffsetHole = 5;
+
+  outerDiameter = 4;
+
+  hammond(
+    outerLength, outerWidth, outerHeight, lidHeight,
+    innerLength, innerWidth, innerHeight,
+    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
+    outerDiameter,
+    part, boxColor);
+}
+
+module hammond1550q(part="both", boxColor="grey") {
+  outerLength = 60;
+  outerWidth = 55;
+  outerHeight = 30.1;
+  lidHeight = 4;
+
+  innerLength = 57;
+  innerWidth = 51;
+  innerHeight = 26.8;
 
   postWidth = 6.5;
   holeDiameter = 3.5;
