@@ -162,7 +162,7 @@ zRotateSquonkCutout = 0; // [0:360]
 // Enable passthrough?
 enablePassthrough = "no"; // [yes, no]
 // Select passthrough type
-passthroughType = "hole"; // [hole: Hole, jack: Power Jack]
+passthroughType = "hole"; // [hole: Hole, jack608: Switchcraft Unmated Power Jack]
 
 // Passthrough hole diameter
 passthroughDiameter = 5;

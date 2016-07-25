@@ -53,6 +53,10 @@ module renderFull() {
           rotate(rotPassthrough)
             color(boxColor)
               elliptic(passthroughDiameter / 2, passthroughDiameter / 2, passthroughDepth);
+      else
+        translate(posPassthrough)
+          rotate(rotPassthrough)
+            passthrough(passthroughType, boxColor, false);
     }
   }
 }
@@ -97,5 +101,10 @@ module visualisation() {
         translate(posPassthrough)
           rotate(rotPassthrough)
             #elliptic(passthroughDiameter / 2, passthroughDiameter / 2, passthroughDepth);
+
+      else
+        translate(posPassthrough)
+          rotate(rotPassthrough)
+            passthrough(passthroughType);
     }
 }

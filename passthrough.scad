@@ -3,8 +3,8 @@
  * 
  * + Switchcraft Unmated Power Jack: http://www.switchcraft.com/Documents/switchcraft_sealed_unmated_power_jack_npb_608.pdf
  */
- $fn = 360;
-passthrough("jack608");
+//$fn = 360;
+//passthrough("jack608");
 
 module passthrough(type, partColor="silver", holes="true") {
   if(type == "jack608")
