@@ -6,6 +6,7 @@ include <bottle.scad>;
 include <cutout.scad>;
 include <display.scad>;
 include <enclosure.scad>;
+include <passthrough.scad>;
 
 module renderFull() {
   difference() {
@@ -45,6 +46,14 @@ module renderFull() {
         rotate(rotSquonk)
             bottle(squonkType, boxColor, false);
     }
+    
+    if(enablePassthrough == "yes") {
+      if(passthroughType == "hole")
+        translate(posPassthrough)
+          rotate(rotPassthrough)
+            color(boxColor)
+              elliptic(passthroughDiameter / 2, passthroughDiameter / 2, passthroughDepth);
+    }
   }
 }
 
@@ -82,4 +91,11 @@ module visualisation() {
       rotate(rotSquonk)
         bottle(squonkType);
   }
+  
+  if(enablePassthrough == "yes") {
+      if(passthroughType == "hole")
+        translate(posPassthrough)
+          rotate(rotPassthrough)
+            #elliptic(passthroughDiameter / 2, passthroughDiameter / 2, passthroughDepth);
+    }
 }

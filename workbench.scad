@@ -157,6 +157,31 @@ yRotateSquonkCutout = 0; // [0:360]
 // z rotation
 zRotateSquonkCutout = 0; // [0:360]
 
+/* [Passthrough] */
+
+// Enable passthrough?
+enablePassthrough = "no"; // [yes, no]
+// Select passthrough type
+passthroughType = "hole"; // [hole: Hole, jack: Power Jack]
+
+// Passthrough hole diameter
+passthroughDiameter = 5;
+passthroughDepth = 6;
+
+// x offset from the center
+xOffsetPassthrough = -29.5; // [-100:0.1:100]
+// y offset from the center
+yOffsetPassthrough = 0; // [-100:0.1:100]
+// z offset from the bottom
+zOffsetPassthrough = 15; // [-200:0.1:200]
+
+// x rotation
+xRotatePassthrough = 90; // [0:360]
+// y rotation
+yRotatePassthrough = 90; // [0:360]
+// z rotation
+zRotatePassthrough = 0; // [0:360]
+
 /* [View Mode] */
 
 // If visualisation is enabled, the parts are rendered
@@ -178,6 +203,7 @@ posSled = [xOffsetSled, yOffsetSled, zOffsetSled];
 posPcb = [xOffsetPcb, yOffsetPcb, zOffsetPcb];
 posSquonk = [xOffsetSquonk, yOffsetSquonk, zOffsetSquonk];
 posSquonkCutout = [xOffsetSquonkCutout, yOffsetSquonkCutout, zOffsetSquonkCutout];
+posPassthrough = [xOffsetPassthrough, yOffsetPassthrough, zOffsetPassthrough];
 
 rot510 = [xRotate_510, yRotate_510, zRotate_510];
 rotFireSwitch = [xRotateFireSwitch, yRotateFireSwitch, zRotateFireSwitch];
@@ -186,6 +212,7 @@ rotSled = [xRotateSled, yRotateSled, zRotateSled];
 rotPcb = [xRotatePcb, yRotatePcb, zRotatePcb];
 rotSquonk = [xRotateSquonk, yRotateSquonk, zRotateSquonk];
 rotSquonkCutout = [xRotateSquonkCutout, yRotateSquonkCutout, zRotateSquonkCutout];
+rotPassthrough = [xRotatePassthrough, yRotatePassthrough, zRotatePassthrough];
 
 /**
  * To activate animation:
@@ -197,7 +224,7 @@ yRotate = (part == "lid") ? 180 : 0;
 zRotate = $t * 360;
 
 rotate([xRotate, yRotate, zRotate]) {
-    renderFull();
-    if(visualize == "yes" && part == "both")
-        visualisation();
+  renderFull();
+  if(visualize == "yes" && part == "both")
+    visualisation();
 }
