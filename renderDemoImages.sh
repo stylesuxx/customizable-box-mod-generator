@@ -6,7 +6,7 @@ openscad -o images/bottle.png --autocenter --camera=0,0,36.50,55,0,25,206 --imgs
 openscad -o images/displays.png --autocenter --camera=18.6,-8.7,2.6,55,0,25,135 --imgsize=1256,944 --projection=p --preview=preview demo-displays.scad
 openscad -o images/passthrough.png --autocenter --camera=0,0,0,55,0,25,140 --imgsize=1256,944 --projection=p --preview=preview demo-passthrough.scad
 openscad -o images/pcb.png --autocenter --camera=21.6,-15.52,4.6,55,0,25,151 --imgsize=1256,944 --projection=p --preview=preview demo-pcb.scad
-openscad -o images/sleds.png --autocenter --camera=0,-28,9,55,0,25,252 --imgsize=1256,944 --projection=p --preview=preview demo-sleds.scad
+openscad -o images/sleds.png --autocenter --camera=45,-55,9,55,0,25,460 --imgsize=1256,944 --projection=p --preview=preview demo-sleds.scad
 openscad -o images/switches.png --autocenter --camera=15,-26,-6,55,0,25,260 --imgsize=1256,944 --projection=p --preview=preview demo-switches.scad
 openscad -o images/hammond_boxes_color.png --autocenter --camera=80,0,62,55,0,25,700 --imgsize=1256,944 --projection=p --preview=preview demo-hammond_boxes_color.scad
 openscad -o images/hammond_boxes.png --autocenter --camera=80,0,62,55,0,25,700 --imgsize=1256,944 --projection=p --preview=preview demo-hammond_boxes.scad
