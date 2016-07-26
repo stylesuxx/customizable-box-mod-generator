@@ -11,7 +11,7 @@ boxColor = "gray"; // [gray, silver, black, blue, green, lightgray, orange, purp
 /* [510 connector] */
 
 // Select your 510 connector
-type_510_connector = "varitube22mmV2Slotted"; // [varitube12mmBottomFeed: Varitube 12mm Bottom Feed, varitube14mm: Varitube 14mm, varitube22mmBottomFeed: Varitube 22mm Bottom Feed, varitube22mmV2Flat: Varitube 22mm Flat V2, varitube22mmV2Slotted: Varitube 22mm Slotted V2, varitube28.5mm: Varitube 28.5mm]
+type_510_connector = "varitube22mmV2Slotted"; // [fdv15.5mmV4: Fat Daddy Vapes V4 15.5mm, fdv22mmV4: Fat Daddy Vapes V4 22mm, fdv30mmV4: Fat Daddy Vapes V4 30mm, fdv15.5mmV4lp: Fat Daddy Vapes V4 15.5mm Low Profile, fdv22mmV4lp: Fat Daddy Vapes V4 22mm Low Profile, fdv22mmV4lps: Fat Daddy Vapes V4 22mm Low Profile Short, varitube12mmBottomFeed: Varitube 12mm Bottom Feed, varitube14mm: Varitube 14mm, varitube22mmBottomFeed: Varitube 22mm Bottom Feed, varitube22mmV2Flat: Varitube 22mm Flat V2, varitube22mmV2Slotted: Varitube 22mm Slotted V2, varitube28.5mm: Varitube 28.5mm]
 // Select color of the 510 connector
 color_510_connector = "silver"; // [gray, silver, black]
 
