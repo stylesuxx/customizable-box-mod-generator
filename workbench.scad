@@ -78,7 +78,7 @@ zRotateVoltMeter = 0; // [0:360]
 // Enable a battery sled?
 enableSled = "yes"; // [yes, no]
 // Select your volt meter type
-sledType = "keystone1048"; // [keystone1042: Keystone single 18650 Single (1042), keystone1048: Keystone dual 18650 (1048)]
+sledType = "keystone1048"; // [keystone1042: Keystone single 18650 (1042), keystone1042empty: Keystone single 18650 empty (1042), keystone1048: Keystone dual 18650 (1048), keystone1048empty: Keystone dual 18650 empty (1048), keystone1048left: Keystone dual 18650 left (1048), keystone1048right: Keystone dual 18650 right (1048)]
 
 // x offset from the center
 xOffsetSled = 0; // [-100:0.1:100]
