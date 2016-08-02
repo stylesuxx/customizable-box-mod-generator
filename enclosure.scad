@@ -7,46 +7,49 @@
  * + http://www.hammondmfg.com/pdf/1550P.pdf
  * + http://www.hammondmfg.com/pdf/1550Q.pdf
  *
- * + http://www.hammondmfg.com/pdf/1550C.pdf
- * + http://www.hammondmfg.com/pdf/1550D.pdf
- * + http://www.hammondmfg.com/pdf/1550E.pdf
- * + http://www.hammondmfg.com/pdf/1550F.pdf
- * + http://www.hammondmfg.com/pdf/1550G.pdf
- * + http://www.hammondmfg.com/pdf/1550H.pdf
- * + http://www.hammondmfg.com/pdf/1550J.pdf
- * + http://www.hammondmfg.com/pdf/1550K.pdf
- * + http://www.hammondmfg.com/pdf/1550L.pdf
- * + http://www.hammondmfg.com/pdf/1550M.pdf
- * + http://www.hammondmfg.com/pdf/1550N.pdf
- *
  * + http://www.hammondmfg.com/pdf/1590A.pdf
  * + http://www.hammondmfg.com/pdf/1590B.pdf
  * + http://www.hammondmfg.com/pdf/1590BS.pdf
  * + http://www.hammondmfg.com/pdf/1590G.pdf
  */
- //$fn = 36;
- 
-//enclosure("hammond1550a", "both", "grey");
-//enclosure("hammond1550b", "both", "grey");
-//enclosure("hammond1550p", "both", "grey");
-//enclosure("hammond1550q", "both", "grey");
+$fn = 36;
 
-/* TODO: The following do not have straight bodies */
-//enclosure("hammond1550c", "both", "grey");
-//enclosure("hammond1550d", "both", "grey");
-//enclosure("hammond1550e", "both", "grey");
-//enclosure("hammond1550f", "both", "grey");
-//enclosure("hammond1550g", "both", "grey");
-//enclosure("hammond1550h", "both", "grey");
-//enclosure("hammond1550j", "both", "grey");
-//enclosure("hammond1550k", "both", "grey");
-//enclosure("hammond1550l", "both", "grey");
-//enclosure("hammond1550m", "both", "grey");
-//enclosure("hammond1550n", "both", "grey");
+/* [Type] */
+// Which part of the enclosure to view?
+part = "both"; // [both, body, lid, test]
 
-//enclosure("hammond1590a", "both", "grey");
-//enclosure("hammond1590b", "both", "grey");
-//enclosure("hammond1590g", "both", "grey");
+// Which type of box do you want?
+type = "hammond1550a"; // [hammond1550a, hammond1550b, hammond1550p, hammond1550q, hammond1590a, hammond1590b, hammond1590g]
+
+/* [Body] */
+
+// Adjust in case your magnets do not fit width wise.
+diameterOffsetBodyHole = -0.2; // [-5:0.05:5]
+
+// Increase in case your magnet holders are too flimsy.
+additionalWallBody = 0; // [-5:0.05:5]
+
+// Decrease in case your magnets do not fit height wise.
+zOffsetBodyHole = 0; // [-5:0.05:5]
+
+/* [Lid] */
+
+// Adjust in case your magnets do not fit width wise
+diameterOffsetLidHole = 0.1; // [-5:0.05:5]
+
+// Increase in case your magnet holder walls are too flimsy
+additionalWallLid = 0; // [-5:0.05:5]
+
+// Decrease in case your magnets do not fit height wise.
+zOffsetLidHole = 0; // [-5:0.05:5]
+
+// The width of the snaps
+snapWidth = 1; // [-5:0.05:5]
+
+/* [Hidden] */
+print = true;
+
+enclosure(type, part);
  
 module enclosure(type, part, boxColor="grey") {
   if(type == "hammond1550a")
@@ -75,25 +78,30 @@ module hammond1550a(part="both", boxColor="grey") {
   outerLength = 89;
   outerWidth = 35;
   outerHeight = 30.1;
-  lidHeight = 4;
+  lidHeight = 4.1;
 
   innerLength = 86;
   innerWidth = 32;
   innerHeight = 27.1;
 
-  postWidth = 6.5;
-  holeDiameter = 3.5;
+  postDiameter = 4;
+  postWidthBody = 6.5;
+  postWidthLid = 6.5;
+  holeDiameterBody = 3.5;
+  holeDiameterLid = 4;
 
   xOffsetHole = 5;
   yOffsetHole = 5;
 
-  outerDiameter = 4;
+  outerDiameter = 7;
 
   hammond(
     outerLength, outerWidth, outerHeight, lidHeight,
     innerLength, innerWidth, innerHeight,
-    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
-    outerDiameter,
+    postWidthBody, holeDiameterBody,
+    postWidthLid, holeDiameterLid,
+    xOffsetHole, yOffsetHole,
+    outerDiameter, postDiameter,
     part, boxColor);
 }
 
@@ -101,337 +109,61 @@ module hammond1550b(part="both", boxColor="grey") {
   outerLength = 114.50;
   outerWidth = 64;
   outerHeight = 30.1;
-  lidHeight = 4;
+  lidHeight = 4.1;
 
   innerLength = 111.50;
   innerWidth = 60.58;
   innerHeight = 27.1;
 
-  postWidth = 6.5;
-  holeDiameter = 3.5;
+  postDiameter = 4;
+  postWidthBody = 6.5;
+  postWidthLid = 6.5;
+  holeDiameterBody = 3.5;
+  holeDiameterLid = 4;
 
   xOffsetHole = 5;
   yOffsetHole = 5;
 
-  outerDiameter = 4;
+  outerDiameter = 7;
 
   hammond(
     outerLength, outerWidth, outerHeight, lidHeight,
     innerLength, innerWidth, innerHeight,
-    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
-    outerDiameter,
-    part, boxColor);
-}
-
-module hammond1550c(part="both", boxColor="grey") {
-  outerLength = 115;
-  outerWidth = 90;
-  outerHeight = 55.1;
-  lidHeight = 4;
-
-  innerLength = 111.40;
-  innerWidth = 86.4;
-  innerHeight = 51.8;
-
-  postWidth = 6.5;
-  holeDiameter = 3.5;
-
-  xOffsetHole = 5;
-  yOffsetHole = 5;
-
-  outerDiameter = 4;
-
-  hammond(
-    outerLength, outerWidth, outerHeight, lidHeight,
-    innerLength, innerWidth, innerHeight,
-    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
-    outerDiameter,
-    part, boxColor);
-}
-
-module hammond1550d(part="both", boxColor="grey") {
-  outerLength = 114.5;
-  outerWidth = 64;
-  outerHeight = 55.1;
-  lidHeight = 4;
-
-  innerLength = 110.90;
-  innerWidth = 60.4;
-  innerHeight = 52.1;
-
-  postWidth = 6.5;
-  holeDiameter = 3.5;
-
-  xOffsetHole = 5;
-  yOffsetHole = 5;
-
-  outerDiameter = 4;
-
-  hammond(
-    outerLength, outerWidth, outerHeight, lidHeight,
-    innerLength, innerWidth, innerHeight,
-    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
-    outerDiameter,
-    part, boxColor);
-}
-
-module hammond1550e(part="both", boxColor="grey") {
-  outerLength = 171;
-  outerWidth = 121;
-  outerHeight = 55.1;
-  lidHeight = 4;
-
-  innerLength = 167;
-  innerWidth = 117;
-  innerHeight = 51.1;
-
-  postWidth = 6.5;
-  holeDiameter = 3.5;
-
-  xOffsetHole = 5;
-  yOffsetHole = 5;
-
-  outerDiameter = 4;
-
-  hammond(
-    outerLength, outerWidth, outerHeight, lidHeight,
-    innerLength, innerWidth, innerHeight,
-    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
-    outerDiameter,
-    part, boxColor);
-}
-
-module hammond1550f(part="both", boxColor="grey") {
-  outerLength = 171;
-  outerWidth = 121;
-  outerHeight = 105.1;
-  lidHeight = 4;
-
-  innerLength = 167;
-  innerWidth = 117;
-  innerHeight = 101.1;
-
-  postWidth = 6.5;
-  holeDiameter = 3.5;
-
-  xOffsetHole = 5;
-  yOffsetHole = 5;
-
-  outerDiameter = 4;
-
-  hammond(
-    outerLength, outerWidth, outerHeight, lidHeight,
-    innerLength, innerWidth, innerHeight,
-    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
-    outerDiameter,
-    part, boxColor);
-}
-
-module hammond1550g(part="both", boxColor="grey") {
-  outerLength = 222;
-  outerWidth = 146;
-  outerHeight = 55.1;
-  lidHeight = 4;
-
-  innerLength = 218;
-  innerWidth = 142;
-  innerHeight = 51.1;
-
-  postWidth = 6.5;
-  holeDiameter = 3.5;
-
-  xOffsetHole = 5;
-  yOffsetHole = 5;
-
-  outerDiameter = 4;
-
-  hammond(
-    outerLength, outerWidth, outerHeight, lidHeight,
-    innerLength, innerWidth, innerHeight,
-    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
-    outerDiameter,
-    part, boxColor);
-}
-
-module hammond1550h(part="both", boxColor="grey") {
-  outerLength = 222;
-  outerWidth = 146;
-  outerHeight = 105.1;
-  lidHeight = 4;
-
-  innerLength = 218;
-  innerWidth = 142;
-  innerHeight = 101.1;
-
-  postWidth = 6.5;
-  holeDiameter = 3.5;
-
-  xOffsetHole = 5;
-  yOffsetHole = 5;
-
-  outerDiameter = 4;
-
-  hammond(
-    outerLength, outerWidth, outerHeight, lidHeight,
-    innerLength, innerWidth, innerHeight,
-    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
-    outerDiameter,
-    part, boxColor);
-}
-
-module hammond1550j(part="both", boxColor="grey") {
-  outerLength = 275;
-  outerWidth = 175;
-  outerHeight = 66.6;
-  lidHeight = 4;
-
-  innerLength = 270;
-  innerWidth = 170;
-  innerHeight = 61.6;
-
-  postWidth = 6.5;
-  holeDiameter = 3.5;
-
-  xOffsetHole = 5;
-  yOffsetHole = 5;
-
-  outerDiameter = 4;
-
-  hammond(
-    outerLength, outerWidth, outerHeight, lidHeight,
-    innerLength, innerWidth, innerHeight,
-    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
-    outerDiameter,
-    part, boxColor);
-}
-
-module hammond1550k(part="both", boxColor="grey") {
-  outerLength = 140;
-  outerWidth = 102;
-  outerHeight = 76.6;
-  lidHeight = 4;
-
-  innerLength = 136;
-  innerWidth = 98;
-  innerHeight = 73.3;
-
-  postWidth = 6.5;
-  holeDiameter = 3.5;
-
-  xOffsetHole = 5;
-  yOffsetHole = 5;
-
-  outerDiameter = 4;
-
-  hammond(
-    outerLength, outerWidth, outerHeight, lidHeight,
-    innerLength, innerWidth, innerHeight,
-    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
-    outerDiameter,
-    part, boxColor);
-}
-
-module hammond1550l(part="both", boxColor="grey") {
-  outerLength = 165;
-  outerWidth = 127.4;
-  outerHeight = 76.5;
-  lidHeight = 4;
-
-  innerLength = 159.9;
-  innerWidth = 123.4;
-  innerHeight = 72.5;
-
-  postWidth = 6.5;
-  holeDiameter = 3.5;
-
-  xOffsetHole = 5;
-  yOffsetHole = 5;
-
-  outerDiameter = 4;
-
-  hammond(
-    outerLength, outerWidth, outerHeight, lidHeight,
-    innerLength, innerWidth, innerHeight,
-    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
-    outerDiameter,
-    part, boxColor);
-}
-
-module hammond1550m(part="both", boxColor="grey") {
-  outerLength = 120.4;
-  outerWidth = 100.4;
-  outerHeight = 35.37;
-  lidHeight = 4;
-
-  innerLength = 116.8;
-  innerWidth = 96.8;
-  innerHeight = 32.1;
-
-  postWidth = 6.5;
-  holeDiameter = 3.5;
-
-  xOffsetHole = 5;
-  yOffsetHole = 5;
-
-  outerDiameter = 4;
-
-  hammond(
-    outerLength, outerWidth, outerHeight, lidHeight,
-    innerLength, innerWidth, innerHeight,
-    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
-    outerDiameter,
-    part, boxColor);
-}
-
-module hammond1550n(part="both", boxColor="grey") {
-  outerLength = 250.1;
-  outerWidth = 250.2;
-  outerHeight = 101.3;
-  lidHeight = 4;
-
-  innerLength = 245.2;
-  innerWidth = 245.2;
-  innerHeight = 96.3;
-
-  postWidth = 6.5;
-  holeDiameter = 3.5;
-
-  xOffsetHole = 5;
-  yOffsetHole = 5;
-
-  outerDiameter = 4;
-
-  hammond(
-    outerLength, outerWidth, outerHeight, lidHeight,
-    innerLength, innerWidth, innerHeight,
-    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
-    outerDiameter,
+    postWidthBody, holeDiameterBody,
+    postWidthLid, holeDiameterLid,
+    xOffsetHole, yOffsetHole,
+    outerDiameter, postDiameter,
     part, boxColor);
 }
 
 module hammond1550p(part="both", boxColor="grey") {
-  outerLength = 80.1;
-  outerWidth = 55.2;
+  outerLength = 80;
+  outerWidth = 55;
   outerHeight = 25.1;
-  lidHeight = 4;
+  lidHeight = 4.1;
 
-  innerLength = 78.5;
+  innerLength = 76.13;
   innerWidth = 52;
   innerHeight = 22.1;
 
-  postWidth = 6.5;
-  holeDiameter = 3.5;
+  postDiameter = 4;
+  postWidthBody = 6.5;
+  postWidthLid = 6.5;
+  holeDiameterBody = 3.5;
+  holeDiameterLid = 4;
 
   xOffsetHole = 5;
   yOffsetHole = 5;
 
-  outerDiameter = 4;
+  outerDiameter = 7;
 
   hammond(
     outerLength, outerWidth, outerHeight, lidHeight,
     innerLength, innerWidth, innerHeight,
-    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
-    outerDiameter,
+    postWidthBody, holeDiameterBody,
+    postWidthLid, holeDiameterLid,
+    xOffsetHole, yOffsetHole,
+    outerDiameter, postDiameter,
     part, boxColor);
 }
 
@@ -439,25 +171,30 @@ module hammond1550q(part="both", boxColor="grey") {
   outerLength = 60;
   outerWidth = 55;
   outerHeight = 30.1;
-  lidHeight = 4;
+  lidHeight = 4.1;
 
   innerLength = 57;
   innerWidth = 51;
   innerHeight = 26.8;
 
-  postWidth = 6.5;
-  holeDiameter = 3.5;
+  postDiameter = 4;
+  postWidthBody = 6.5;
+  postWidthLid = 6.5;
+  holeDiameterBody = 3.5;
+  holeDiameterLid = 4;
 
   xOffsetHole = 5;
   yOffsetHole = 5;
 
-  outerDiameter = 4;
+  outerDiameter = 7;
 
   hammond(
     outerLength, outerWidth, outerHeight, lidHeight,
     innerLength, innerWidth, innerHeight,
-    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
-    outerDiameter,
+    postWidthBody, holeDiameterBody,
+    postWidthLid, holeDiameterLid,
+    xOffsetHole, yOffsetHole,
+    outerDiameter, postDiameter,
     part, boxColor);
 }
 
@@ -465,25 +202,30 @@ module hammond1590a(part="both", boxColor="grey") {
   outerLength = 92.6;
   outerWidth = 38.5;
   outerHeight = 31;
-  lidHeight = 4;
+  lidHeight = 4.1;
 
   innerLength = 89.10;
   innerWidth = 35;
   innerHeight = 27.4;
 
-  postWidth = 6.5;
-  holeDiameter = 4;
+  postDiameter = 4;
+  postWidthBody = 6.5;
+  postWidthLid = 6.5;
+  holeDiameterBody = 3.5;
+  holeDiameterLid = 4;
 
   xOffsetHole = 5;
   yOffsetHole = 5;
 
-  outerDiameter = 4;
+  outerDiameter = 7;
 
   hammond(
     outerLength, outerWidth, outerHeight, lidHeight,
     innerLength, innerWidth, innerHeight,
-    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
-    outerDiameter,
+    postWidthBody, holeDiameterBody,
+    postWidthLid, holeDiameterLid,
+    xOffsetHole, yOffsetHole,
+    outerDiameter, postDiameter,
     part, boxColor);
 }
 
@@ -491,25 +233,30 @@ module hammond1590b(part="both", boxColor="grey") {
   outerLength = 112.4;
   outerWidth = 60.5;
   outerHeight = 31;
-  lidHeight = 4;
+  lidHeight = 4.1;
 
   innerLength = 108.1;
   innerWidth = 56.5;
   innerHeight = 27;
 
-  postWidth = 6;
-  holeDiameter = 4;
+  postDiameter = 4;
+  postWidthBody = 6;
+  postWidthLid = 6;
+  holeDiameterBody = 3.5;
+  holeDiameterLid = 4;
 
   xOffsetHole = 5;
   yOffsetHole = 5;
 
-  outerDiameter = 4;
+  outerDiameter = 7;
 
   hammond(
     outerLength, outerWidth, outerHeight, lidHeight,
     innerLength, innerWidth, innerHeight,
-    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
-    outerDiameter,
+    postWidthBody, holeDiameterBody,
+    postWidthLid, holeDiameterLid,
+    xOffsetHole, yOffsetHole,
+    outerDiameter, postDiameter,
     part, boxColor);
 }
 
@@ -517,207 +264,249 @@ module hammond1590g(part="both", boxColor="grey") {
   outerLength = 100;
   outerWidth = 50;
   outerHeight = 25;
-  lidHeight = 4;
+  lidHeight = 4.1;
 
   innerLength = 96.2;
   innerWidth = 46.2;
   innerHeight = 21;
 
-  postWidth = 6.5;
-  holeDiameter = 4;
+  postDiameter = 4;
+  postWidthBody = 6.5;
+  postWidthLid = 6.5;
+  holeDiameterBody = 3.5;
+  holeDiameterLid = 4;
 
   xOffsetHole = 5;
   yOffsetHole = 5;
 
-  outerDiameter = 4;
+  outerDiameter = 7;
 
   hammond(
     outerLength, outerWidth, outerHeight, lidHeight,
     innerLength, innerWidth, innerHeight,
-    postWidth, holeDiameter, xOffsetHole, yOffsetHole,
-    outerDiameter,
+    postWidthBody, holeDiameterBody,
+    postWidthLid, holeDiameterLid,
+    xOffsetHole, yOffsetHole,
+    outerDiameter, postDiameter,
     part, boxColor);
 }
 
 module hammond(
   outerLength, outerWidth, outerHeight, lidHeight,
   innerLength, innerWidth, innerHeight,
-  postWidth, holeDiameter, xOffsetHole, yOffsetHole,
-  outerDiameter,
+  postWidthBody, holeDiameterBody,
+  postWidthLid, holeDiameterLid,
+  xOffsetHole, yOffsetHole,
+  outerDiameter, postDiameter,
   part, boxColor)
 {
-  holeRadius = holeDiameter / 2;
+  holeRadiusBody = holeDiameterBody / 2;
+  holeRadiusLid = holeDiameterLid / 2;
   outerRadius = outerDiameter / 2;
+  postRadius = postDiameter / 2;
   bodyHeight = outerHeight - lidHeight;
 
   xOffset = (outerLength - innerLength) / 2;
   yOffset = (outerWidth - innerWidth) / 2;
   zOffset = (outerHeight - innerHeight) / 2;
 
-  xOffsetLid = outerWidth / 2;
-  yOffsetLid = -(bodyHeight + lidHeight) / 2;
-  zOffsetLid = outerLength;
-  posLid = [xOffsetLid, yOffsetLid, zOffsetLid];
-  rotLid = [0, 90, 90];
+  screwPosts = [
+    [0, 0, zOffset],
+    [outerLength, 0, zOffset],
+    [outerLength, outerWidth, zOffset],
+    [0, outerWidth, zOffset]
+  ];
 
-  xOffsetBody = outerWidth / 2;
-  yOffsetBody = (bodyHeight + lidHeight) / 2;
-  zOffsetBody = 0;
-  posBody = [xOffsetBody, yOffsetBody, zOffsetBody];
-  rotBody = [0, 270, 90];
+  translate([outerWidth / 2, -outerHeight / 2, outerLength]) {
+    rotate([0,90,90]) {
+      if(part == "both" && !print) {
+        translate([outerLength, 0, outerHeight])
+          rotate([0,180,0])
+            color(boxColor)
+              renderBody();
 
-  if(part == "both") {
-    translate(posBody)
-      rotate(rotBody)
-        color(boxColor) body();
+        %renderLid();
+      }
+      
+      if(part == "both" && print) {
+        yOffset = (outerLength + outerWidth) / 2;
+        pos = [outerLength, yOffset, 0];
+        rot = [90, 0, 270];
 
-    translate(posLid)
-      rotate(rotLid)
-        %lid();
-  }
-
-  if(part == "body")
-    translate(posBody)
-      rotate(rotBody)
-        color(boxColor) body();
-
-  if(part == "lid")
-    translate(posLid)
-      rotate(rotLid)
-        color(boxColor) lid();
-
-  module lid() {
-    group() {
-      difference() {
-        union() {
-          roundedBody(lidHeight);
-          translate([0, 0, zOffset])
-            screwPosts(lidHeight - zOffset);
-        }
-
-        translate([0, 0, zOffset])
-          screwHoles(lidHeight - zOffset);
+        translate(pos)
+          rotate(rot){
+            renderBody();
+            
+            translate([0, outerWidth +3, 0])
+              renderLid();
+          }
       }
 
-      cube(0); // So wer are able to group
-    }
-  }
+      if(part == "body") {
+        yOffset = (outerLength + outerWidth) / 2;
+        pos = (print) ? [outerLength, yOffset, 0] : [outerLength, 0, outerHeight];
+        rot = (print) ? [90, 0, 270] : [0,180,0];
 
-  module body() {
-    group() {
-      difference() {
-        group() {
-          roundedBody(bodyHeight);
-          translate([0, 0, zOffset])
-            screwPosts(bodyHeight - zOffset);
-        }
-
-        translate([0, 0, zOffset])
-          screwHoles(bodyHeight - zOffset);
+        translate(pos)
+          rotate(rot)
+            color(boxColor)
+              renderBody();
       }
 
-      cube(0); // So wer are able to group
+      if(part == "lid") {
+        yOffset = (outerLength + outerWidth) / 2;
+        pos = (print) ? [outerLength, yOffset, 0] : [0, 0, 0];
+        rot = (print) ? [90, 0, 270] : [0, 0, 0];
+
+        translate(pos)
+          rotate(rot)
+            color(boxColor)
+              renderLid();
+      }
+
+      if(part == "test") {
+        length = 13;
+        width = 13;
+        height = 10;
+
+        translate([outerLength - outerHeight, 0, outerLength/4])
+        rotate([0, 90, 0]) {
+          intersection() {
+            translate([0, 0, outerHeight - height])
+              cube([length, width, height]);
+
+            translate([outerLength, 0, outerHeight])
+              rotate([0,180,0])
+                  renderBody();
+          }
+
+          translate([0, -outerWidth +  (length * 2), 0])
+            intersection() {
+              translate([0, outerWidth - width, outerHeight - height])
+                cube([length, width, height]);
+              
+              translate([outerLength, 0, outerHeight])
+                rotate([0,180,0])
+                  renderLid();
+            }
+        }
+      }
     }
   }
+  
+  module renderBody() {
+    zOffsetPost = 0.1;
+    postHeight = bodyHeight - zOffset + zOffsetPost;
 
-  module roundedBody(height) {
-    zOffset = (height - innerHeight);
-    columnsXLength = outerWidth - outerRadius * 2;
-    columnsYLength = outerLength - outerRadius * 2;
-    columnsZLength = height - outerRadius;
-    columnsX = [
-      [outerRadius, outerRadius, outerRadius],
-      [outerLength - outerRadius, outerRadius, outerRadius]
-    ];
-    columnsY = [
-      [outerRadius, outerRadius, outerRadius],
-      [outerRadius, outerWidth - outerRadius, outerRadius]
-    ];
-    columnsZ = [
-      [outerRadius, outerRadius, outerRadius],
-      [outerRadius, outerWidth - outerRadius, outerRadius],
-      [outerLength - outerRadius, outerWidth - outerRadius, outerRadius],
-      [outerLength - outerRadius, outerRadius, outerRadius]
-    ];
-    corners = [
-      [outerRadius, outerRadius, outerRadius],
-      [outerRadius, outerWidth - outerRadius, outerRadius],
-      [outerLength - outerRadius, outerRadius, outerRadius],
-      [outerLength - outerRadius, outerWidth - outerRadius, outerRadius]
-    ];
+    holeRadius = holeRadiusBody + diameterOffsetBodyHole / 2;
 
     difference() {
-      hull() {
-        for(pos = columnsZ)
-          translate(pos)
-            cylinder(r=outerRadius, h=columnsZLength);
+      group() {
+        difference() {
+          roundBody(bodyHeight);
 
-        for(pos = columnsX)
-          translate(pos)
-            rotate([270,90,0])
-              cylinder(r=outerRadius, h=columnsXLength);
+          translate([xOffset, yOffset, zOffset])
+            cube([innerLength, innerWidth, bodyHeight]);
+        }
 
-        for(pos = columnsY)
-          translate(pos)
-            rotate([0,90,0])
-              cylinder(r=outerRadius, h=columnsYLength);
-
-        for(pos = corners)
-          translate(pos)
-            sphere(r=outerRadius);
+        translate([0, 0, -zOffsetPost])
+          screwPosts(postWidthBody + additionalWallBody, postHeight);
       }
 
-      translate([xOffset, yOffset + outerDiameter / 2, yOffset])
-        cube([innerLength, innerWidth - outerDiameter, innerHeight + 1]);
-
-      translate([xOffset + outerDiameter / 2, yOffset, yOffset])
-        cube([innerLength - outerDiameter, innerWidth, innerHeight + 1]);
+      postHoles(outerHeight, holeRadius, zOffsetBodyHole);
     }
   }
+  
+  module renderLid() {
+    zOffsetPost = 0.1;
+    postHeight = lidHeight - zOffset + zOffsetPost;
+
+    holeHeight = 3;
+    holeRadius = holeRadiusLid + diameterOffsetLidHole / 2;
+    zOffsetHole = -zOffset + lidHeight - holeHeight + zOffsetLidHole;
     
-  module screwPost(height) {
-    xOffsetRadius = xOffset + postWidth - outerRadius;
-    yOffsetRadius = yOffset + postWidth - outerRadius;
+    difference() {
+      group() {
+        difference() {
+          roundBody(lidHeight);
+
+          translate([xOffset, yOffset, zOffset])
+            cube([innerLength, innerWidth, lidHeight]);
+        }
+
+        translate([0, 0, -zOffsetPost])
+          screwPosts(postWidthLid + additionalWallLid, postHeight, holeRadiusLid);
+        
+        translate([outerLength / 2 - 3.5, yOffset, zOffset])
+          cube([7, snapWidth, lidHeight - zOffset + 1]);
+        
+        translate([outerLength / 2 - 3.5, outerWidth - yOffset - snapWidth, zOffset])
+          cube([7, snapWidth, lidHeight - zOffset + 1]);
+        
+        translate([yOffset, outerWidth / 2 - 3.5, zOffset])
+          cube([snapWidth, 7, lidHeight - zOffset + 1]);
+        
+        translate([outerLength - yOffset - snapWidth, outerWidth / 2 - 3.5, zOffset])
+          cube([snapWidth, 7, lidHeight - zOffset + 1]);
+      }
+
+      postHoles(outerHeight, holeRadius, zOffsetHole);
+    }
+  }
+
+  module roundBody(cutHeight) {
+    corners = [
+      [outerRadius, outerRadius, outerRadius],
+      [outerRadius, outerRadius, cutHeight],
+      [outerLength - outerRadius, outerRadius, outerRadius],
+      [outerLength - outerRadius, outerRadius, cutHeight],
+      [outerLength - outerRadius, outerWidth - outerRadius, outerRadius],
+      [outerLength - outerRadius, outerWidth - outerRadius, cutHeight],
+      [outerRadius, outerWidth - outerRadius, outerRadius],
+      [outerRadius, outerWidth - outerRadius, cutHeight]
+    ];
+
+    hull() {
+      difference() {
+        union() {
+          for(pos = corners)
+            translate(pos)
+              sphere(r=outerRadius);
+        }
+
+        translate([0, 0, cutHeight])
+          cube([outerLength, outerWidth, outerRadius +1]);
+      }
+    }
+  }
+
+  module postHoles(height, radius, zOffset) {
+    for(i = [0:3])
+      translate(screwPosts[i])
+        rotate([0, 0, 90 * i])
+          translate([xOffsetHole, yOffsetHole, zOffset])
+            cylinder(r=radius, h=height);
+  }
+
+  module screwPosts(postWidth, height, holeRadius) {
+    for(i = [0:3])
+      translate(screwPosts[i])
+        rotate([0, 0, 90 * i])
+          screwPost(postWidth, height, holeRadius);
+  }
+
+  module screwPost(postWidth, height) {
+    xOffsetRadius = min(xOffset, yOffset) + postWidth - postRadius;
+    yOffsetRadius = min(xOffset, yOffset) + postWidth - postRadius;
 
     hull() {
       translate([min(xOffset, yOffset), min(xOffset, yOffset), 0]) {
         cube([postWidth, 1, height]);
-        cube([1, postWidth, height]);
+        cube([1, postWidth , height]);
       }
 
       translate([xOffsetRadius, yOffsetRadius, 0])
-        cylinder(r=outerRadius, h=height);
-    }
-  }
-    
-  module screwPosts(height) {
-    posts = [
-      [0, 0, 0],
-      [outerLength, 0, 0],
-      [outerLength, outerWidth, 0],
-      [0, outerWidth, 0]
-    ];
-
-    group() {
-      for(i = [0:3])
-        translate(posts[i])
-          rotate([0, 0, 90 * i])
-            screwPost(height);
-    }
-  }
-
-  module screwHoles(height) {
-    holes = [
-      [xOffsetHole, yOffsetHole, 0],
-      [xOffsetHole, outerWidth - yOffsetHole, 0],
-      [outerLength - xOffsetHole, outerWidth - yOffsetHole, 0],
-      [outerLength - xOffsetHole, yOffsetHole, 0]
-    ];
-
-    group() {
-      for(pos = holes)
-        translate(pos)
-          cylinder(r=holeRadius, h=height + 1);
+        cylinder(r=postRadius, h=height);
     }
   }
 }

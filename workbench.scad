@@ -16,7 +16,7 @@ type_510_connector = "varitube22mmV2Slotted"; // [fdv15.5mmV4: Fat Daddy Vapes V
 color_510_connector = "silver"; // [gray, silver, black]
 
 // x offset from the center
-xOffset_510 = 0; // [-100:0.1:100]
+xOffset_510 = 0; // [-100:20:100]
 // y offset from the center
 yOffset_510 = 0; // [-100:0.1:100]
 // z offset from the bottom
