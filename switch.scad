@@ -17,7 +17,7 @@
 //switch("cloneTec12mmFlat");
 //switch("cloneTec12mmRaised");
 //switch("vandal16mmFlat");
-//switch("vandal16mmRaised");
+switch("vandal16mmRaised");
 //switch("vandal19mmFlat");
 //switch("vandal19mmRaised");
 
@@ -91,7 +91,7 @@ module cloneTec12mm(switchColor="silver", holes=true, raised=false) {
 module vandal16mm(switchColor="silver", holes=true, raised=false) {
   diameterBottom = 16;
   radiusBottom = diameterBottom / 2;
-  heightBottom = 20;
+  heightBottom = 17;
 
   diameterRing = 18;
   radiusRing = diameterRing / 2;
