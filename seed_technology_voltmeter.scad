@@ -4,37 +4,57 @@
  * Seed Technology:
  * + http://media.digikey.com/pdf/Data%20Sheets/Seeed%20Technology/114990163_Web.pdf
  */
-$fn = 360;
 
+/* [Settings] */
+
+// Height of the border
+height = 4;
+
+// Wall thickness border top and bottom.
+walls = 1.5;
+// Wall thickness border left and right.
+wallsSide = 5;
+// Wall thickness lid.
+wallsLid = 1;
+
+// Tolerance for the display.
+spacing = 0.25;
+// Tolerance for the lid.
+spacingLid = 0.025;
+
+/* [Display measurements] */
+
+// Display length
 displayLength = 22.6;
+// Display width.
 displayWidth = 10;
+// Display height without the board.
 displayHeight = 6.3;
 
+// Board length.
 boardLength = 30;
+// Board width.
 boardWidth = 11;
-// Including components on the back
+// Board height including components on the back.
 boardHeight = 2.5;
+
+/* [Hidden] */
+
+$fn = 360;
 
 screwHoleDiameter = 2;
 
 segmentLength = 7;
-paddingSegment = 2.2;  
+paddingSegment = 2.2;
 
 //seedVoltMeter(displayColor, "green", holes);
 //seedVoltMeter(displayColor, "yellow", holes);
 //seedVoltMeter(displayColor, "red", holes);
 //seedVoltMeter(displayColor, "blue", holes);
-holder(4);
+holder(height);
 
 module holder(height) {
-  walls = 1.5;
-  wallsSide = 5;
-  wallsLid = 1.2;
-
-  spacing = 0.25;
-  spacingLid = 0.3;
-
-  heightLid = wallsLid + height + boardHeight;
+  heightLid = wallsLid + height + boardHeight + 1;
 
   outerLength = displayLength + (wallsSide + spacing ) * 2;
   outerWidth = displayWidth + (walls + spacing ) * 2;
@@ -48,7 +68,7 @@ module holder(height) {
   innerWidthTop = outerWidthTop - wallsLid * 2;
 
   outletWidth = 4;
-  xOffsetOutlet = outerLength + spacing + walls - outletWidth - 5;
+  xOffsetOutlet = outerLength + spacing + walls - outletWidth - 4.75;
 
   module bottom() {
     difference() {
@@ -71,9 +91,10 @@ module holder(height) {
     }
   }
 
-  top();
+  translate([-outerLengthTop / 2, -outerWidthTop - 1, 0])
+    top();
 
-  translate([0, outerWidthTop + 2, 0])
+  translate([-outerLengthTop / 2, 1, 0])
     bottom();
 }
 
