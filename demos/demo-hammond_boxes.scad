@@ -1,4 +1,4 @@
-include <enclosure.scad>;
+include <../enclosure.scad>;
 $fn = 36;
 
 translate([-110, 0, 0]) {

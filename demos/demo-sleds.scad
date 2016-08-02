@@ -1,4 +1,4 @@
-include <sled.scad>;
+include <../sled.scad>;
 $fn = 360;
 
 translate([90, -55, 0])

@@ -1,4 +1,4 @@
-include <510.scad>;
+include <../510.scad>;
 $fn = 360;
 
 translate([30,50,0])

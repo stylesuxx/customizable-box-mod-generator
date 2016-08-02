@@ -1,4 +1,4 @@
-include <pcb.scad>;
+include <../pcb.scad>;
 
 raptor10a();
 

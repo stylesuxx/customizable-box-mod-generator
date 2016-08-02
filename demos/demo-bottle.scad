@@ -1,4 +1,4 @@
-include <bottle.scad>;
+include <../bottle.scad>;
 
 $fn = 360;
 

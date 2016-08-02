@@ -1,4 +1,4 @@
-include <display.scad>;
+include <../display.scad>;
 
 display("seedVoltMeterGreen");
 

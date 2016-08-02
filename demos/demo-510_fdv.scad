@@ -1,4 +1,4 @@
-include <510.scad>;
+include <../510.scad>;
 $fn = 360;
 
 rotate([0, 0, 0]) {

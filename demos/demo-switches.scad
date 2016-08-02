@@ -1,4 +1,4 @@
-include <switch.scad>;
+include <../switch.scad>;
 $fn = 360;
 
 translate([-55, -5,0])
