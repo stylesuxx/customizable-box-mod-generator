@@ -1,4 +1,4 @@
-include <../enclosure.scad>;
+include <../parametric_hammond.scad>;
 $fn = 36;
 
 translate([-110, 0, 0]) {

@@ -9,10 +9,8 @@
  *
  * + http://www.hammondmfg.com/pdf/1590A.pdf
  * + http://www.hammondmfg.com/pdf/1590B.pdf
- * + http://www.hammondmfg.com/pdf/1590BS.pdf
  * + http://www.hammondmfg.com/pdf/1590G.pdf
  */
-$fn = 36;
 
 /* [Type] */
 // Which part of the enclosure to view?
@@ -24,34 +22,35 @@ type = "hammond1550a"; // [hammond1550a, hammond1550b, hammond1550p, hammond1550
 /* [Body] */
 
 // Adjust in case your magnets do not fit width wise.
-diameterOffsetBodyHole = -0.2; // [-5:0.05:5]
+diameterOffsetBodyHole = -0.25; // [-5:0.05:5]
 
 // Increase in case your magnet holders are too flimsy.
-additionalWallBody = 0; // [-5:0.05:5]
+additionalWallBody = 0.00; // [-5:0.05:5]
 
 // Decrease in case your magnets do not fit height wise.
-zOffsetBodyHole = 0; // [-5:0.05:5]
+zOffsetBodyHole = 0.00; // [-5:0.05:5]
 
 /* [Lid] */
 
 // Adjust in case your magnets do not fit width wise
-diameterOffsetLidHole = 0.1; // [-5:0.05:5]
+diameterOffsetLidHole = 0.10; // [-5:0.05:5]
 
 // Increase in case your magnet holder walls are too flimsy
-additionalWallLid = 0; // [-5:0.05:5]
+additionalWallLid = 0.00; // [-5:0.05:5]
 
 // Decrease in case your magnets do not fit height wise.
-zOffsetLidHole = 0; // [-5:0.05:5]
+zOffsetLidHole = 0.00; // [-5:0.05:5]
 
 // The width of the snaps
-snapWidth = 1; // [-5:0.05:5]
+snapWidth = 1.00; // [-5:0.05:5]
 
 /* [Hidden] */
-print = true;
+$fn = 36;
+print = false;
 
-enclosure(type, part);
+//enclosure(type, part);
  
-module enclosure(type, part, boxColor="grey") {
+module enclosure(type, part, boxColor) {
   if(type == "hammond1550a")
     hammond1550a(part, boxColor);
 
@@ -395,22 +394,19 @@ module hammond(
   }
   
   module renderBody() {
-    zOffsetPost = 0.1;
-    postHeight = bodyHeight - zOffset + zOffsetPost;
-
+    postHeight = bodyHeight - zOffset;
     holeRadius = holeRadiusBody + diameterOffsetBodyHole / 2;
 
     difference() {
-      group() {
-        difference() {
-          roundBody(bodyHeight);
+      difference() {
+        roundBody(bodyHeight);
 
+        difference() {
           translate([xOffset, yOffset, zOffset])
             cube([innerLength, innerWidth, bodyHeight]);
-        }
 
-        translate([0, 0, -zOffsetPost])
           screwPosts(postWidthBody + additionalWallBody, postHeight);
+        }
       }
 
       postHoles(outerHeight, holeRadius, zOffsetBodyHole);
@@ -455,28 +451,44 @@ module hammond(
   }
 
   module roundBody(cutHeight) {
-    corners = [
+    cornersBottom = [
       [outerRadius, outerRadius, outerRadius],
-      [outerRadius, outerRadius, cutHeight],
       [outerLength - outerRadius, outerRadius, outerRadius],
-      [outerLength - outerRadius, outerRadius, cutHeight],
       [outerLength - outerRadius, outerWidth - outerRadius, outerRadius],
-      [outerLength - outerRadius, outerWidth - outerRadius, cutHeight],
-      [outerRadius, outerWidth - outerRadius, outerRadius],
-      [outerRadius, outerWidth - outerRadius, cutHeight]
+      [outerRadius, outerWidth - outerRadius, outerRadius]
     ];
 
-    hull() {
-      difference() {
-        union() {
-          for(pos = corners)
-            translate(pos)
-              sphere(r=outerRadius);
-        }
+    cornersTop = [
+      [outerRadius, outerRadius, outerRadius],
+      [outerLength - outerRadius, outerRadius, outerRadius],
+      [outerLength - outerRadius, outerWidth - outerRadius, outerRadius],
+      [outerRadius, outerWidth - outerRadius, outerRadius]
+    ];
 
-        translate([0, 0, cutHeight])
-          cube([outerLength, outerWidth, outerRadius +1]);
+    bodyInnerWidth = outerWidth - outerRadius * 2;
+    bodyInnerLength = outerLength - outerRadius * 2;
+    bodyInnerHeight = cutHeight- outerRadius;
+
+    translate([0, outerRadius,outerRadius])
+      cube([outerLength, bodyInnerWidth, bodyInnerHeight]);
+    
+    translate([outerRadius, 0, outerRadius])
+      cube([bodyInnerLength, outerWidth,  bodyInnerHeight]);
+
+    for(pos = cornersTop)
+      translate(pos)
+        cylinder(r=outerRadius, h = bodyInnerHeight);
+
+    //1832 // 7170
+    difference() {
+      hull() {
+        for(pos = cornersBottom)
+          translate(pos)
+            sphere(r=outerRadius);
       }
+
+      translate([-1, -1, cutHeight])
+        cube([outerLength + 2, outerWidth + 2, cutHeight]);
     }
   }
 
@@ -496,16 +508,14 @@ module hammond(
   }
 
   module screwPost(postWidth, height) {
-    xOffsetRadius = min(xOffset, yOffset) + postWidth - postRadius;
-    yOffsetRadius = min(xOffset, yOffset) + postWidth - postRadius;
+    offsetRadius = postWidth - postRadius;
 
-    hull() {
-      translate([min(xOffset, yOffset), min(xOffset, yOffset), 0]) {
-        cube([postWidth, 1, height]);
-        cube([1, postWidth , height]);
-      }
+    translate([min(xOffset, yOffset), min(xOffset, yOffset), 0]) {
+      cube([postWidth, postWidth - postRadius, height]);
 
-      translate([xOffsetRadius, yOffsetRadius, 0])
+      cube([postWidth - postRadius, postWidth , height]);
+
+      translate([offsetRadius, offsetRadius, 0])
         cylinder(r=postRadius, h=height);
     }
   }

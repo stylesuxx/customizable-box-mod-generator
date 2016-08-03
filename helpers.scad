@@ -5,7 +5,7 @@ include <switch.scad>;
 include <bottle.scad>;
 include <cutout.scad>;
 include <display.scad>;
-include <enclosure.scad>;
+include <parametric_hammond.scad>;
 include <passthrough.scad>;
 
 module renderFull() {
