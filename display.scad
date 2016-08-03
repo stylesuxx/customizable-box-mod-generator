@@ -1,5 +1,4 @@
 include <seed_technology_voltmeter.scad>;
-$fn = 360;
 
 //display("seedVoltMeterGreen");
 //display("seedVoltMeterYellow");
