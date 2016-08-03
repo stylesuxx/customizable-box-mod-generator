@@ -4,7 +4,7 @@ $fn = 360;
 //display("seedVoltMeterGreen");
 //display("seedVoltMeterYellow");
 //display("seedVoltMeterRed");
-display("seedVoltMeterBlue");
+//display("seedVoltMeterBlue");
 
 module display(type, displayColor="white", holes=true) {
   if(type == "seedVoltMeterGreen")

@@ -62,7 +62,7 @@ voltMeterType = "seedVoltMeterGreen"; // [seedVoltMeterGreen: Seed Volt Meter Gr
 // x offset from the center
 xOffsetVoltMeter = 0; // [-100:0.1:100]
 // y offset from the center
-yOffsetVoltMeter = 4.5; // [-100:0.1:100]
+yOffsetVoltMeter = 6.7; // [-100:0.1:100]
 // z offset from the bottom
 zOffsetVoltMeter = 90; // [-200:0.1:200]
 
