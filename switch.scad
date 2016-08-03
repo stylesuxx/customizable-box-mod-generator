@@ -6,8 +6,8 @@
  * + http://www.modparts.co.uk/switches/313-12mm-clonetec-switch-flat-stainless-steel-0638183554272.html
  *
  * Generic 16mm Vandal Proof:
- * + http://www.modparts.co.uk/switches/156-16mm-stainless-steel-vandal-proof-switch-with-button-actuator-0638183551660.html
- * + http://www.modparts.co.uk/switches/158-16mm-stainless-steel-vandal-proof-switch-with-flat-actuator-0638183551684.html
+ * + http://www.digikey.com/product-detail/en/e-switch/PV2H240BB/EG5144-ND/4028692
+ * + http://www.digikey.com/product-detail/en/e-switch/PV2S240NN/PV2S240NN-ND/3777996
  *
  * Generic 19mm Vandal Proof:
  * + http://www.modparts.co.uk/switches/159-19mm-stainless-steel-vandal-proof-switch-with-raised-button-actuator-0638183551691.html
@@ -90,23 +90,41 @@ module cloneTec12mm(switchColor="silver", holes=true, raised=false) {
 
 module vandal16mm(switchColor="silver", holes=true, raised=false) {
   diameterBottom = 16;
-  radiusBottom = diameterBottom / 2;
-  heightBottom = 17;
+  heightBottom = 13.5;
 
   diameterRing = 18;
-  radiusRing = diameterRing / 2;
   heightRing = 1.5;
 
   diameterButton = 11.7;
-  radiusButton = diameterButton / 2;
   heightButton = (raised) ? 1.2 : 0;
 
-  translate([0, 0, -heightBottom])
+  heightPins = 3.5;
+  lengthPins = 2;
+  widthPins = 0.5;
+  paddingPins = 3;
+
+  radiusButton = diameterButton / 2;
+  radiusRing = diameterRing / 2;
+  radiusBottom = diameterBottom / 2;
+
+  xOffsetPins = -lengthPins / 2;
+  yOffsetPins = -widthPins / 2 - radiusBottom;
+
+  translate([0, 0, -heightBottom]) {
     color(switchColor)
       switchBase(
         radiusBottom, heightBottom,
         radiusRing, heightRing,
         radiusButton, heightButton);
+
+    color("gold") {
+      translate([xOffsetPins, yOffsetPins + paddingPins, -heightPins])
+        cube([lengthPins, widthPins, heightPins]);
+
+      translate([xOffsetPins, -yOffsetPins - paddingPins, -heightPins])
+        cube([lengthPins, widthPins, heightPins]);
+    }
+  }
 }
 
 module vandal19mm(switchColor="silver", holes=true, raised=false) {
