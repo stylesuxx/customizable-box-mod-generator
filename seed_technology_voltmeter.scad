@@ -40,7 +40,7 @@ boardHeight = 2.5;
 
 /* [Hidden] */
 
-$fn = 360;
+//$fn = 360;
 
 screwHoleDiameter = 2;
 
