@@ -51,7 +51,7 @@ paddingSegment = 2.2;
 //seedVoltMeter(displayColor, "yellow", holes);
 //seedVoltMeter(displayColor, "red", holes);
 //seedVoltMeter(displayColor, "blue", holes);
-holder(height);
+//holder(height);
 
 module holder(height) {
   heightLid = wallsLid + height + boardHeight + 1;
