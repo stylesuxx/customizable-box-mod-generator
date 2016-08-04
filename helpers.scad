@@ -14,7 +14,7 @@ module renderFull() {
 
     translate(pos510)
       rotate(rot510)
-        connector510(type_510_connector, boxColor, false);
+        connector510(type_510_connector, boxColor, false, tolerance_510);
 
     if(enableFireSwitch == "yes")
       translate(posFireSwitch)

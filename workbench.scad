@@ -29,6 +29,9 @@ yRotate_510 = 0; // [0:360]
 // z rotation
 zRotate_510 = 0; // [0:360]
 
+// Hole diameter tolerance
+tolerance_510 = 0.25;
+
 /* [Fire Switch] */
 
 // Enable a fire switch?

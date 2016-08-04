@@ -10,6 +10,7 @@
 //$fn = 36;
 
 //connector510("varitube12mmBottomFeed");
+//connector510("varitube12mmBottomFeed", 0, false, 0);
 //connector510("varitube14mm");
 //connector510("varitube22mmBottomFeed");
 //connector510("varitube22mmV2Slotted");
@@ -24,46 +25,47 @@
 //connector510("fdv22mmV4lp");
 
 //connector510("fdv22mmV4lps");
+//connector510("fdv22mmV4lps", 0, false, 0.5);
 
-module connector510(type, color510="silver", holes=true) {
+module connector510(type, color510="silver", holes=true, tolerance=0) {
   if(type == "varitube12mmBottomFeed")
-    varitube12mmBottomFeed(color510, holes);
+    varitube12mmBottomFeed(color510, holes, tolerance);
 
   if(type == "varitube14mm")
-    varitube14mm(color510, holes);
+    varitube14mm(color510, holes, tolerance);
 
   if(type == "varitube22mmBottomFeed")
-    varitube22mmBottomFeed(color510, holes);
+    varitube22mmBottomFeed(color510, holes, tolerance);
 
   if(type == "varitube22mmV2Slotted")
-    varitube22mmV2Slotted(color510, holes);
+    varitube22mmV2Slotted(color510, holes, tolerance);
 
   if(type == "varitube22mmV2Plain")
-    varitube22mmV2Flat(color510, holes);
+    varitube22mmV2Flat(color510, holes, tolerance);
 
   if(type == "varitube28.5mm")
-    varitube285mm(color510, holes);
+    varitube285mm(color510, holes, tolerance);
 
   if(type == "fdv15.5mmV4")
-    fdv155mmV4(color510, holes);
+    fdv155mmV4(color510, holes, tolerance);
 
   if(type == "fdv22mmV4")
-    fdv22mmV4(color510, holes);
+    fdv22mmV4(color510, holes, tolerance);
 
   if(type == "fdv30mmV4")
-    fdv30mmV4(color510, holes);
+    fdv30mmV4(color510, holes, tolerance);
 
   if(type == "fdv15.5mmV4lp")
-    fdv155mmV4lp(color510, holes);
+    fdv155mmV4lp(color510, holes, tolerance);
 
   if(type == "fdv22mmV4lp")
-    fdv22mmV4lp(color510, holes);
+    fdv22mmV4lp(color510, holes, tolerance);
 
   if(type == "fdv22mmV4lps")
-    fdv22mmV4lps(color510, holes);
+    fdv22mmV4lps(color510, holes, tolerance);
 }
 
-module fdv155mmV4(color510="silver", holes=true) {
+module fdv155mmV4(color510="silver", holes=true, tolerance=0) {
   connectorDiameter = 8;
   connectorHeight = 2.5;
   bodyDiameter = 10;
@@ -76,11 +78,11 @@ module fdv155mmV4(color510="silver", holes=true) {
     bodyDiameter, bodyHeight,
     ringDiameter, ringHeight,
     color510,
-    holes, false
+    holes, tolerance, false
   );
 }
 
-module fdv22mmV4(color510="silver", holes=true) {
+module fdv22mmV4(color510="silver", holes=true, tolerance=0) {
   connectorDiameter = 8;
   connectorHeight = 2.5;
   bodyDiameter = 10;
@@ -93,11 +95,11 @@ module fdv22mmV4(color510="silver", holes=true) {
     bodyDiameter, bodyHeight,
     ringDiameter, ringHeight,
     color510,
-    holes, false
+    holes, tolerance, false
   );
 }
 
-module fdv155mmV4lp(color510="silver", holes=true) {
+module fdv155mmV4lp(color510="silver", holes=true, tolerance=0) {
   connectorDiameter = 8;
   connectorHeight = 2.5;
   bodyDiameter = 10;
@@ -110,11 +112,11 @@ module fdv155mmV4lp(color510="silver", holes=true) {
     bodyDiameter, bodyHeight,
     ringDiameter, ringHeight,
     color510,
-    holes, false
+    holes, tolerance, false
   );
 }
 
-module fdv22mmV4lp(color510="silver", holes=true) {
+module fdv22mmV4lp(color510="silver", holes=true, tolerance=0) {
   connectorDiameter = 8;
   connectorHeight = 2.5;
   bodyDiameter = 10;
@@ -127,11 +129,11 @@ module fdv22mmV4lp(color510="silver", holes=true) {
     bodyDiameter, bodyHeight,
     ringDiameter, ringHeight,
     color510,
-    holes, false
+    holes, tolerance, false
   );
 }
 
-module fdv30mmV4(color510="silver", holes=true) {
+module fdv30mmV4(color510="silver", holes=true, tolerance=0) {
   connectorDiameter = 8;
   connectorHeight = 2.5;
   bodyDiameter = 10;
@@ -144,11 +146,11 @@ module fdv30mmV4(color510="silver", holes=true) {
     bodyDiameter, bodyHeight,
     ringDiameter, ringHeight,
     color510,
-    holes, false
+    holes, tolerance, false
   );
 }
 
-module fdv22mmV4lps(color510="silver", holes=true) {
+module fdv22mmV4lps(color510="silver", holes=true, tolerance=0) {
   connectorDiameter = 8;
   connectorHeight = 2.5;
   bodyDiameter = 10;
@@ -161,7 +163,7 @@ module fdv22mmV4lps(color510="silver", holes=true) {
     bodyDiameter, bodyHeight,
     ringDiameter, ringHeight,
     color510,
-    holes, false
+    holes, tolerance, false
   );
 }
 
@@ -170,10 +172,10 @@ module fdvV4Base(
   bodyDiameter, bodyHeight,
   ringDiameter, ringHeight,
   ringColor,
-  holes=true, slotted=true)
+  holes=true, tolerance=0, slotted=true)
 {
   connectorRadius = connectorDiameter / 2;
-  bodyRadius = bodyDiameter / 2;
+  bodyRadius = (bodyDiameter + tolerance) / 2;
   ringRadius = ringDiameter / 2;
 
   connectorColor = (holes) ? "gold" : ringColor;
@@ -213,7 +215,7 @@ module fdvV4Base(
   }
 }
 
-module varitube14mm(color510="silver", holes=true) {
+module varitube14mm(color510="silver", holes=true, tolerance=0) {
   bodyDiameter = 10;
   bodyHeight = 10.52;
 
@@ -228,10 +230,10 @@ module varitube14mm(color510="silver", holes=true) {
       bodyDiameter, bodyHeight,
       ringDiameter, ringHeight,
       holeDiameter, holeHeight,
-      holes, true);
+      holes, tolerance, true);
 }
 
-module varitube12mm(color510="silver", holes=true) {
+module varitube12mm(color510="silver", holes=true, tolerance=0) {
   bodyDiameter = 10;
   bodyHeight = 12;
 
@@ -246,46 +248,46 @@ module varitube12mm(color510="silver", holes=true) {
       bodyDiameter, bodyHeight,
       ringDiameter, ringHeight,
       holeDiameter, holeHeight,
-      holes, false);
+      holes, tolerance, false);
 }
 
-module varitube12mmBottomFeed(color510="silver", holes=true) {
+module varitube12mmBottomFeed(color510="silver", holes=true, tolerance=0) {
   squonkHeight = 10;
   squonkDiameter = 3;
   squonkRadius = squonkDiameter / 2;
 
   color(color510)
     group() {
-      varitube12mm(holes);
+      varitube12mm(0, holes, tolerance);
 
       translate([0, 0, -12 - squonkHeight])
         cylinder(r=squonkRadius, h=squonkHeight);
     }
 }
 
-module varitube22mmBottomFeed(color510="silver", holes=true) {
+module varitube22mmBottomFeed(color510="silver", holes=true, tolerance=0) {
   squonkHeight = 10;
   squonkDiameter = 3;
   squonkRadius = squonkDiameter / 2;
 
   color(color510)
     group() {
-      varitube22mmV2(color510, holes, false);
+      varitube22mmV2(color510, holes, false, tolerance);
 
       translate([0, 0, -10 - squonkHeight])
         cylinder(r=squonkRadius, h=squonkHeight);
     }
 }
 
-module varitube22mmV2Flat(color510="silver", holes=true) {
-  varitube22mmV2(color510, holes, false);
+module varitube22mmV2Flat(color510="silver", holes=true, tolerance=0) {
+  varitube22mmV2(color510, holes, false, tolerance);
 }
 
-module varitube22mmV2Slotted(color510="silver", holes=true) {
-  varitube22mmV2(color510, holes, true);
+module varitube22mmV2Slotted(color510="silver", holes=true, tolerance=0) {
+  varitube22mmV2(color510, holes, true, tolerance);
 }
 
-module varitube22mmV2(color510="silver", holes=true, slotted=false) {
+module varitube22mmV2(color510="silver", holes=true, slotted=false, tolerance=0) {
   bodyDiameter = 10;
   bodyHeight = 10.52;
 
@@ -300,10 +302,10 @@ module varitube22mmV2(color510="silver", holes=true, slotted=false) {
       bodyDiameter, bodyHeight,
       ringDiameter, ringHeight,
       holeDiameter, holeHeight,
-      holes, slotted);
+      holes, tolerance, slotted);
 }
 
-module varitube285mm(color510="silver", holes=true) {
+module varitube285mm(color510="silver", holes=true, tolerance=0) {
   bodyDiameter = 10;
   bodyHeight = 10.52;
 
@@ -318,16 +320,16 @@ module varitube285mm(color510="silver", holes=true) {
       bodyDiameter, bodyHeight,
       ringDiameter, ringHeight,
       holeDiameter, holeHeight,
-      holes, true);
+      holes, tolerance, true);
 }
 
 module varitubeBase(
   bodyDiameter, bodyHeight,
   ringDiameter, ringHeight,
   holeDiameter, holeHeight,
-  holes=true, slotted=true)
+  holes=true, tolerance=0, slotted=true)
 {
-  bodyRadius = bodyDiameter / 2;
+  bodyRadius = (bodyDiameter + tolerance) / 2;
   ringRadius = ringDiameter / 2;
   holeRadius = holeDiameter / 2;
 
