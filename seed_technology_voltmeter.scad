@@ -53,6 +53,8 @@ paddingSegment = 2.2;
 //seedVoltMeter(displayColor, "blue", holes);
 //holder(height);
 
+//seedVoltMeter(0, "green", false, 0.15);
+
 module holder(height) {
   heightLid = wallsLid + height + boardHeight + 1;
 
@@ -98,7 +100,7 @@ module holder(height) {
     bottom();
 }
 
-module seedVoltMeter(displayColor="white", ledColor="green", holes=true) {
+module seedVoltMeter(displayColor="white", ledColor="green", holes=true, tolerance=0) {
   screwHoleRadius = screwHoleDiameter /2 ;
   padding = (boardLength - displayLength) / 2;
 
@@ -139,8 +141,8 @@ module seedVoltMeter(displayColor="white", ledColor="green", holes=true) {
     color(displayColor)
       group() {
         difference() {
-          translate([padding, 0, boardHeight])
-            cube([displayLength, displayWidth, displayHeight]);
+          translate([padding - tolerance, -tolerance, boardHeight])
+            cube([displayLength + tolerance * 2, displayWidth + tolerance * 2, displayHeight + tolerance]);
 
           if(holes)
             for(pos=segments)

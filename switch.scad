@@ -13,63 +13,67 @@
  * + http://www.modparts.co.uk/switches/159-19mm-stainless-steel-vandal-proof-switch-with-raised-button-actuator-0638183551691.html
  * + http://www.modparts.co.uk/switches/161-19mm-stainless-steel-vandal-proof-switch-with-flat-actuator-0638183551714.html 
  */
- 
-//switch("cloneTec12mmFlat");
-//switch("cloneTec12mmRaised");
-//switch("vandal16mmFlat");
-//switch("vandal16mmRaised");
-//switch("vandal19mmFlat");
-//switch("vandal19mmRaised");
 
-module switch(type, switchColor="silver", holes=true) {
+//switch("cloneTec12mmFlat");
+//switch("cloneTec12mmFlat", 0, false, 0.25);
+//switch("cloneTec12mmRaised");
+//switch("cloneTec12mmRaised", 0, false, 0.25);
+//switch("vandal16mmFlat");
+//switch("vandal16mmFlat", 0, false, 0.25);
+//switch("vandal16mmRaised");
+//switch("vandal16mmRaised", 0, false, 0.25);
+//switch("vandal19mmFlat");
+//switch("vandal19mmFlat", 0, false, 0.25);
+//switch("vandal19mmRaised");
+//switch("vandal19mmRaised", 0, false, 0.25);
+
+module switch(type, switchColor="silver", holes=true, tolerance=0) {
     if(type == "cloneTec12mmFlat")
-        cloneTec12mmFlat(switchColor, holes);
+        cloneTec12mmFlat(switchColor, holes, tolerance);
 
     if(type == "cloneTec12mmRaised")
-        cloneTec12mmRaised(switchColor, holes);
+        cloneTec12mmRaised(switchColor, holes, tolerance);
 
     if(type == "vandal16mmFlat")
-        vandal16mmFlat(switchColor, holes);
+        vandal16mmFlat(switchColor, holes, tolerance);
 
     if(type == "vandal16mmRaised")
-        vandal16mmRaised(switchColor, holes);
+        vandal16mmRaised(switchColor, holes, tolerance);
 
     if(type == "vandal19mmFlat")
-        vandal19mmFlat(switchColor, holes);
+        vandal19mmFlat(switchColor, holes, tolerance);
 
     if(type == "vandal19mmRaised")
-        vandal19mmRaised(switchColor, holes);
-
+        vandal19mmRaised(switchColor, holes, tolerance);
 }
 
-module cloneTec12mmFlat(switchColor="silver", holes=true) {
-    cloneTec12mm(switchColor, holes, false);
+module cloneTec12mmFlat(switchColor="silver", holes=true, tolerance=0) {
+    cloneTec12mm(switchColor, holes, false, tolerance);
 }
 
-module cloneTec12mmRaised(switchColor="silver", holes=true) {
-    cloneTec12mm(switchColor, holes, true);
+module cloneTec12mmRaised(switchColor="silver", holes=true, tolerance=0) {
+    cloneTec12mm(switchColor, holes, true, tolerance);
 }
 
-module vandal16mmFlat(switchColor="silver", holes=true) {
-    vandal16mm(switchColor, holes, false);
+module vandal16mmFlat(switchColor="silver", holes=true, tolerance=0) {
+    vandal16mm(switchColor, holes, false, tolerance);
 }
 
-module vandal16mmRaised(switchColor="silver", holes=true) {
-    vandal16mm(switchColor, holes, true);
+module vandal16mmRaised(switchColor="silver", holes=true, tolerance=0) {
+    vandal16mm(switchColor, holes, true, tolerance);
 }
 
-module vandal19mmFlat(switchColor="silver", holes=true) {
-    vandal19mm(switchColor, holes, false);
+module vandal19mmFlat(switchColor="silver", holes=true, tolerance=0) {
+    vandal19mm(switchColor, holes, false, tolerance);
 }
 
-module vandal19mmRaised(switchColor="silver", holes=true) {
-    vandal19mm(switchColor, holes, true);
+module vandal19mmRaised(switchColor="silver", holes=true, tolerance=0) {
+    vandal19mm(switchColor, holes, true, tolerance);
 }
 
-
-module cloneTec12mm(switchColor="silver", holes=true, raised=false) {
+module cloneTec12mm(switchColor="silver", holes=true, raised=false, tolerance=0) {
   diameterBottom = 12.1;
-  radiusBottom = diameterBottom / 2;
+  radiusBottom = (diameterBottom + tolerance) / 2;
   heightBottom = 7.9;
 
   diameterRing = 14;
@@ -88,7 +92,7 @@ module cloneTec12mm(switchColor="silver", holes=true, raised=false) {
         radiusButton, heightButton);
 }
 
-module vandal16mm(switchColor="silver", holes=true, raised=false) {
+module vandal16mm(switchColor="silver", holes=true, raised=false, tolerance=0) {
   diameterBottom = 16;
   heightBottom = 13.5;
 
@@ -105,7 +109,7 @@ module vandal16mm(switchColor="silver", holes=true, raised=false) {
 
   radiusButton = diameterButton / 2;
   radiusRing = diameterRing / 2;
-  radiusBottom = diameterBottom / 2;
+  radiusBottom = (diameterBottom + tolerance) / 2;
 
   xOffsetPins = -lengthPins / 2;
   yOffsetPins = -widthPins / 2 - radiusBottom;
@@ -127,18 +131,19 @@ module vandal16mm(switchColor="silver", holes=true, raised=false) {
   }
 }
 
-module vandal19mm(switchColor="silver", holes=true, raised=false) {
+module vandal19mm(switchColor="silver", holes=true, raised=false, tolerance=0) {
   diameterBottom = 19;
-  radiusBottom = diameterBottom / 2;
   heightBottom = 22.2;
 
   diameterRing = 22;
-  radiusRing = diameterRing / 2;
   heightRing = 1.6;
 
   diameterButton = 15;
-  radiusButton = diameterButton / 2;
   heightButton = (raised) ? 1.2 : 0;
+
+  radiusBottom = (diameterBottom + tolerance ) / 2;
+  radiusRing = diameterRing / 2;
+  radiusButton = diameterButton / 2;
 
   translate([0, 0, -heightBottom])
     color(switchColor)

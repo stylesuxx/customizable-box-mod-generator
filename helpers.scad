@@ -19,12 +19,12 @@ module renderFull() {
     if(enableFireSwitch == "yes")
       translate(posFireSwitch)
         rotate(rotFireSwitch)
-          switch(fireSwitchType, boxColor, false);
+          switch(fireSwitchType, boxColor, false, toleranceFireSwitch);
 
     if(enableVoltMeter == "yes")
       translate(posVoltMeter)
         rotate(rotVoltMeter)
-          display(voltMeterType, boxColor, false);
+          display(voltMeterType, boxColor, false, toleranceVoltMeter);
 
     if(enableSled == "yes")
       translate(posSled)
@@ -52,7 +52,7 @@ module renderFull() {
         translate(posPassthrough)
           rotate(rotPassthrough)
             color(boxColor)
-              elliptic(passthroughDiameter / 2, passthroughDiameter / 2, passthroughDepth);
+              elliptic(passthroughDiameter, passthroughDiameter, passthroughDepth);
       else
         translate(posPassthrough)
           rotate(rotPassthrough)

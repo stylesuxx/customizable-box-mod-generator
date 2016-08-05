@@ -30,7 +30,7 @@ yRotate_510 = 0; // [0:360]
 zRotate_510 = 0; // [0:360]
 
 // Hole diameter tolerance
-tolerance_510 = 0.25;
+tolerance_510 = 0.25; //[-5:0.01:5]
 
 /* [Fire Switch] */
 
@@ -55,6 +55,9 @@ yRotateFireSwitch = 90; // [0:360]
 // z rotation
 zRotateFireSwitch = 0; // [0:360]
 
+// Hole diameter tolerance
+toleranceFireSwitch = 0.25; //[-5:0.01:5]
+
 /* [Volt Meter] */
 
 // Enable the volt meter?
@@ -63,11 +66,11 @@ enableVoltMeter = "yes"; // [yes, no]
 voltMeterType = "seedVoltMeterGreen"; // [seedVoltMeterGreen: Seed Volt Meter Green, seedVoltMeteryellow: Seed Volt Meter Yellow, seedVoltMeterRed: Seed Volt Meter Red, seedVoltMeterBlue: Seed Volt Meter Blue]
 
 // x offset from the center
-xOffsetVoltMeter = 0; // [-100:0.1:100]
+xOffsetVoltMeter = 0; // [-100:0.01:100]
 // y offset from the center
-yOffsetVoltMeter = 6.7; // [-100:0.1:100]
+yOffsetVoltMeter = 6.54; // [-100:0.01:100]
 // z offset from the bottom
-zOffsetVoltMeter = 90; // [-200:0.1:200]
+zOffsetVoltMeter = 90; // [-200:0.01:200]
 
 // x rotation
 xRotateVoltMeter = 270; // [0:360]
@@ -75,6 +78,9 @@ xRotateVoltMeter = 270; // [0:360]
 yRotateVoltMeter = 180; // [0:360]
 // z rotation
 zRotateVoltMeter = 0; // [0:360]
+
+// Cutout tolerance
+toleranceVoltMeter = 0.15; //[-5:0.01:5]
 
 /* [Sled] */
 
