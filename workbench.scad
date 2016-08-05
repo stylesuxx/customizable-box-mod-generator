@@ -124,6 +124,54 @@ yRotatePcb = 0; // [0:360]
 // z rotation
 zRotatePcb = 270; // [0:360]
 
+/* [Thumb Wheel] */
+
+//Wnable a thumbwheel?
+enableWheel = "no"; // [yes, no]
+
+wheelDiameter = 25;
+wheelDiameterHole = 6.2;
+
+wheelHeightTop = 1.5;
+wheelHeightCenter = 1;
+wheelHeightBottom = 1.5;
+
+wheelRoundnessTop = 50;
+wheelRoundnessBottom = 50;
+
+wheelGripStep = 20;
+wheelGripRadius = 1;
+wheelGripOffset = 0.5;
+
+wheelColor = "silver";
+//wheelHoles = true;
+wheelTolerance = 0.25;
+
+trimmerLength = 16;
+trimmerWidth = 15.5;
+trimmerHeight = 5.8;
+
+trimmerDiameter = 7;
+
+trimmerWallLeft = 2;
+trimmerWalls = 1;
+
+trimmerPadding = 4.5;
+
+// x offset from the center
+xOffsetWheel = 0; // [-100:0.1:100]
+// y offset from the center
+yOffsetWheel = 0; // [-100:0.1:100]
+// z offset from the bottom
+zOffsetWheel = 0; // [-200:0.1:200]
+
+// x rotation
+xRotateWheel = 0; // [0:360]
+// y rotation
+yRotateWheel = 0; // [0:360]
+// z rotation
+zRotateWheel = 0; // [0:360]
+
 /* [Squonker] */
 
 // Enable squonker?
@@ -191,12 +239,17 @@ yRotatePassthrough = 90; // [0:360]
 // z rotation
 zRotatePassthrough = 0; // [0:360]
 
+/* [Cover] */
+enableCover = "yes"; // [yes, no]
+coverHeight = 1;
+coverTolerance = 0.5;
+
 /* [View Mode] */
 
 // If visualisation is enabled, the parts are rendered
 visualize = "yes"; // [yes, no]
 // Which parts of the box to display
-part = "both"; // [both, body, lid]
+part = "both"; // [both, body, bodycover, cover, lid]
 
 /* [Hidden] */
 sledColor = "black";
@@ -213,6 +266,7 @@ posPcb = [xOffsetPcb, yOffsetPcb, zOffsetPcb];
 posSquonk = [xOffsetSquonk, yOffsetSquonk, zOffsetSquonk];
 posSquonkCutout = [xOffsetSquonkCutout, yOffsetSquonkCutout, zOffsetSquonkCutout];
 posPassthrough = [xOffsetPassthrough, yOffsetPassthrough, zOffsetPassthrough];
+posWheel = [xOffsetWheel, yOffsetWheel, zOffsetWheel];
 
 rot510 = [xRotate_510, yRotate_510, zRotate_510];
 rotFireSwitch = [xRotateFireSwitch, yRotateFireSwitch, zRotateFireSwitch];
@@ -222,18 +276,19 @@ rotPcb = [xRotatePcb, yRotatePcb, zRotatePcb];
 rotSquonk = [xRotateSquonk, yRotateSquonk, zRotateSquonk];
 rotSquonkCutout = [xRotateSquonkCutout, yRotateSquonkCutout, zRotateSquonkCutout];
 rotPassthrough = [xRotatePassthrough, yRotatePassthrough, zRotatePassthrough];
+rotWheel = [xRotateWheel, yRotateWheel, zRotateWheel];
 
 /**
  * To activate animation:
  * View -> Animated
  * Set FPS to 15 and steps to 100
  */
-xRotate = (part != "both") ? 270 : 0;
+xRotate = (part != "both" && part != "bodycover" && part != "all") ? 270 : 0;
 yRotate = (part == "lid") ? 180 : 0;
 zRotate = $t * 360;
 
 rotate([xRotate, yRotate, zRotate]) {
   renderFull();
-  if(visualize == "yes" && part == "both")
+  if(visualize == "yes" && (part == "both" || part == "bodycover" || part == "cover"))
     visualisation();
 }
