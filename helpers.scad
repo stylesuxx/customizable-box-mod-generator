@@ -7,56 +7,72 @@ include <cutout.scad>;
 include <display.scad>;
 include <parametric_hammond.scad>;
 include <passthrough.scad>;
+include <thumbwheel.scad>;
 
 module renderFull() {
   difference() {
-    enclosure(boxType, part, boxColor);
+    enclosure(boxType, part, boxColor, (enableCover == "yes") ? coverHeight : 0, coverTolerance);
 
-    translate(pos510)
-      rotate(rot510)
-        connector510(type_510_connector, boxColor, false, tolerance_510);
+    group() {
+      translate(pos510)
+        rotate(rot510)
+          connector510(type_510_connector, boxColor, false, tolerance_510);
 
-    if(enableFireSwitch == "yes")
-      translate(posFireSwitch)
-        rotate(rotFireSwitch)
-          switch(fireSwitchType, boxColor, false, toleranceFireSwitch);
+      if(enableFireSwitch == "yes")
+        translate(posFireSwitch)
+          rotate(rotFireSwitch)
+            switch(fireSwitchType, boxColor, false, toleranceFireSwitch);
 
-    if(enableVoltMeter == "yes")
-      translate(posVoltMeter)
-        rotate(rotVoltMeter)
-          display(voltMeterType, boxColor, false, toleranceVoltMeter);
+      if(enableVoltMeter == "yes")
+        translate(posVoltMeter)
+          rotate(rotVoltMeter)
+            display(voltMeterType, boxColor, false, toleranceVoltMeter);
 
-    if(enableSled == "yes")
-      translate(posSled)
-        rotate(rotSled)
-          sled(sledType, boxColor, false);
+      if(enableSled == "yes")
+        translate(posSled)
+          rotate(rotSled)
+            sled(sledType, boxColor, false);
 
-    if(enablePcb == "yes")
-      translate(posPcb)
-        rotate(rotPcb)
-          pcb(pcbType, false);
+      if(enablePcb == "yes")
+        translate(posPcb)
+          rotate(rotPcb)
+            pcb(pcbType, false);
 
-    if(enableSquonk == "yes") {
-      translate(posSquonkCutout)
-        rotate(rotSquonkCutout)
-          color(boxColor)
-            elliptic(squonkCutoutHeight, squonkCutoutWidth, squonkCutoutDepth);
+      if(enableWheel == "yes")
+        translate(posWheel)
+          rotate(rotWheel)
+            thumbwheel(
+              wheelDiameter, wheelDiameterHole,
+              wheelHeightTop, wheelHeightCenter, wheelHeightBottom,
+              wheelRoundnessTop, wheelRoundnessBottom,
+              wheelGripStep, wheelGripRadius, wheelGripOffset,
+              boxColor, false, wheelTolerance,
+              trimmerLength, trimmerWidth, trimmerHeight, trimmerDiameter,
+              trimmerWallLeft, trimmerWalls, trimmerPadding
+            );
 
-      translate(posSquonk)
-        rotate(rotSquonk)
-            bottle(squonkType, boxColor, false);
-    }
-    
-    if(enablePassthrough == "yes") {
-      if(passthroughType == "hole")
-        translate(posPassthrough)
-          rotate(rotPassthrough)
+      if(enableSquonk == "yes") {
+        translate(posSquonkCutout)
+          rotate(rotSquonkCutout)
             color(boxColor)
-              elliptic(passthroughDiameter, passthroughDiameter, passthroughDepth);
-      else
-        translate(posPassthrough)
-          rotate(rotPassthrough)
-            passthrough(passthroughType, boxColor, false);
+              elliptic(squonkCutoutHeight, squonkCutoutWidth, squonkCutoutDepth);
+
+        translate(posSquonk)
+          rotate(rotSquonk)
+              bottle(squonkType, boxColor, false);
+      }
+
+      if(enablePassthrough == "yes") {
+        if(passthroughType == "hole")
+          translate(posPassthrough)
+            rotate(rotPassthrough)
+              color(boxColor)
+                elliptic(passthroughDiameter, passthroughDiameter, passthroughDepth);
+        else
+          translate(posPassthrough)
+            rotate(rotPassthrough)
+              passthrough(passthroughType, boxColor, false);
+      }
     }
   }
 }
@@ -86,6 +102,19 @@ module visualisation() {
       rotate(rotPcb)
         pcb(pcbType);
 
+  if(enableWheel == "yes")
+      translate(posWheel)
+        rotate(rotWheel)
+          thumbwheel(
+            wheelDiameter, wheelDiameterHole,
+            wheelHeightTop, wheelHeightCenter, wheelHeightBottom,
+            wheelRoundnessTop, wheelRoundnessBottom,
+            wheelGripStep, wheelGripRadius, wheelGripOffset,
+            wheelColor, true, 0,
+            trimmerLength, trimmerWidth, trimmerHeight, trimmerDiameter,
+            trimmerWallLeft, trimmerWalls, trimmerPadding
+          );
+
   if(enableSquonk == "yes") {
     translate(posSquonkCutout)
       rotate(rotSquonkCutout)
@@ -100,7 +129,7 @@ module visualisation() {
       if(passthroughType == "hole")
         translate(posPassthrough)
           rotate(rotPassthrough)
-            #elliptic(passthroughDiameter / 2, passthroughDiameter / 2, passthroughDepth);
+            #elliptic(passthroughDiameter, passthroughDiameter, passthroughDepth);
 
       else
         translate(posPassthrough)
