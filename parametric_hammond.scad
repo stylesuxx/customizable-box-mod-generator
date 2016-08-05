@@ -14,7 +14,7 @@
 
 /* [Type] */
 // Which part of the enclosure to view?
-part = "both"; // [both, body, lid, test]
+part = "bodycover"; // [both, body, lid, test, cover, bodycover, all]
 
 // Which type of box do you want?
 type = "hammond1550a"; // [hammond1550a, hammond1550b, hammond1550p, hammond1550q, hammond1590a, hammond1590b, hammond1590g]
@@ -48,32 +48,32 @@ snapWidth = 1.00; // [-5:0.05:5]
 $fn = 36;
 print = false;
 
-//enclosure(type, part);
+//enclosure(type, part, 0, 1, 0.5);
  
-module enclosure(type, part, boxColor) {
+module enclosure(type, part, boxColor=0, coverHeight=0, coverTolerance=0) {
   if(type == "hammond1550a")
-    hammond1550a(part, boxColor);
+    hammond1550a(part, boxColor, coverHeight, coverTolerance);
 
   if(type == "hammond1550b")
-    hammond1550b(part, boxColor);
+    hammond1550b(part, boxColor, coverHeight, coverTolerance);
 
   if(type == "hammond1550p")
-    hammond1550p(part, boxColor);
+    hammond1550p(part, boxColor, coverHeight, coverTolerance);
 
   if(type == "hammond1550q")
-    hammond1550q(part, boxColor);
+    hammond1550q(part, boxColor, coverHeight, coverTolerance);
 
   if(type == "hammond1590a")
-    hammond1590a(part, boxColor);
+    hammond1590a(part, boxColor, coverHeight, coverTolerance);
 
   if(type == "hammond1590b")
-    hammond1590b(part, boxColor);
+    hammond1590b(part, boxColor, coverHeight, coverTolerance);
 
   if(type == "hammond1590g")
-    hammond1590g(part, boxColor);
+    hammond1590g(part, boxColor, coverHeight, coverTolerance);
 }
 
-module hammond1550a(part="both", boxColor="grey") {
+module hammond1550a(part="both", boxColor="grey", coverHeight=0, coverTolerance=0) {
   outerLength = 89;
   outerWidth = 35;
   outerHeight = 30.1;
@@ -101,10 +101,11 @@ module hammond1550a(part="both", boxColor="grey") {
     postWidthLid, holeDiameterLid,
     xOffsetHole, yOffsetHole,
     outerDiameter, postDiameter,
-    part, boxColor);
+    part, boxColor,
+    coverHeight, coverTolerance);
 }
 
-module hammond1550b(part="both", boxColor="grey") {
+module hammond1550b(part="both", boxColor="grey", coverHeight=0, coverTolerance=0) {
   outerLength = 114.50;
   outerWidth = 64;
   outerHeight = 30.1;
@@ -132,10 +133,11 @@ module hammond1550b(part="both", boxColor="grey") {
     postWidthLid, holeDiameterLid,
     xOffsetHole, yOffsetHole,
     outerDiameter, postDiameter,
-    part, boxColor);
+    part, boxColor,
+    coverHeight, coverTolerance);
 }
 
-module hammond1550p(part="both", boxColor="grey") {
+module hammond1550p(part="both", boxColor="grey", coverHeight=0, coverTolerance=0) {
   outerLength = 80;
   outerWidth = 55;
   outerHeight = 25.1;
@@ -163,10 +165,11 @@ module hammond1550p(part="both", boxColor="grey") {
     postWidthLid, holeDiameterLid,
     xOffsetHole, yOffsetHole,
     outerDiameter, postDiameter,
-    part, boxColor);
+    part, boxColor,
+    coverHeight, coverTolerance);
 }
 
-module hammond1550q(part="both", boxColor="grey") {
+module hammond1550q(part="both", boxColor="grey", coverHeight=0, coverTolerance=0) {
   outerLength = 60;
   outerWidth = 55;
   outerHeight = 30.1;
@@ -194,10 +197,11 @@ module hammond1550q(part="both", boxColor="grey") {
     postWidthLid, holeDiameterLid,
     xOffsetHole, yOffsetHole,
     outerDiameter, postDiameter,
-    part, boxColor);
+    part, boxColor,
+    coverHeight, coverTolerance);
 }
 
-module hammond1590a(part="both", boxColor="grey") {
+module hammond1590a(part="both", boxColor="grey", coverHeight=0, coverTolerance=0) {
   outerLength = 92.6;
   outerWidth = 38.5;
   outerHeight = 31;
@@ -225,10 +229,11 @@ module hammond1590a(part="both", boxColor="grey") {
     postWidthLid, holeDiameterLid,
     xOffsetHole, yOffsetHole,
     outerDiameter, postDiameter,
-    part, boxColor);
+    part, boxColor,
+    coverHeight, coverTolerance);
 }
 
-module hammond1590b(part="both", boxColor="grey") {
+module hammond1590b(part="both", boxColor="grey", coverHeight=0, coverTolerance=0) {
   outerLength = 112.4;
   outerWidth = 60.5;
   outerHeight = 31;
@@ -256,10 +261,11 @@ module hammond1590b(part="both", boxColor="grey") {
     postWidthLid, holeDiameterLid,
     xOffsetHole, yOffsetHole,
     outerDiameter, postDiameter,
-    part, boxColor);
+    part, boxColor,
+    coverHeight, coverTolerance);
 }
 
-module hammond1590g(part="both", boxColor="grey") {
+module hammond1590g(part="both", boxColor="grey", coverHeight=0, coverTolerance=0) {
   outerLength = 100;
   outerWidth = 50;
   outerHeight = 25;
@@ -287,7 +293,8 @@ module hammond1590g(part="both", boxColor="grey") {
     postWidthLid, holeDiameterLid,
     xOffsetHole, yOffsetHole,
     outerDiameter, postDiameter,
-    part, boxColor);
+    part, boxColor,
+    coverHeight, coverTolerance);
 }
 
 module hammond(
@@ -297,7 +304,8 @@ module hammond(
   postWidthLid, holeDiameterLid,
   xOffsetHole, yOffsetHole,
   outerDiameter, postDiameter,
-  part, boxColor)
+  part, boxColor,
+  coverHeight=0, coverTolerance=0)
 {
   holeRadiusBody = holeDiameterBody / 2;
   holeRadiusLid = holeDiameterLid / 2;
@@ -318,7 +326,7 @@ module hammond(
 
   translate([outerWidth / 2, -outerHeight / 2, outerLength]) {
     rotate([0,90,90]) {
-      if(part == "both" && !print) {
+      if((part == "both" || part == "all") && !print) {
         translate([outerLength, 0, outerHeight])
           rotate([0,180,0])
             color(boxColor)
@@ -326,7 +334,7 @@ module hammond(
 
         %renderLid();
       }
-      
+
       if(part == "both" && print) {
         yOffset = (outerLength + outerWidth) / 2;
         pos = [outerLength, yOffset, 0];
@@ -335,13 +343,13 @@ module hammond(
         translate(pos)
           rotate(rot){
             renderBody();
-            
+
             translate([0, outerWidth +3, 0])
               renderLid();
           }
       }
 
-      if(part == "body") {
+      if(part == "body" || part == "bodycover") {
         yOffset = (outerLength + outerWidth) / 2;
         pos = (print) ? [outerLength, yOffset, 0] : [outerLength, 0, outerHeight];
         rot = (print) ? [90, 0, 270] : [0,180,0];
@@ -390,6 +398,27 @@ module hammond(
             }
         }
       }
+
+      if((part == "bodycover" || part == "all") && !print) {
+        translate([0, 0, lidHeight + 0.1])
+          %renderCover();
+      }
+
+      if(part == "cover") {
+        translate([0, 0, lidHeight + 0.1])
+          color(boxColor)
+            renderCover();
+      }
+    }
+  }
+
+  module renderCover() {
+    difference() {
+      translate([xOffset + coverTolerance, yOffset + coverTolerance, 0])
+        cube([innerLength - coverTolerance * 2, innerWidth - coverTolerance * 2, coverHeight]);
+
+      translate([0, 0, -zOffset - 1])
+        screwPosts(postWidthLid + additionalWallLid + coverTolerance, coverHeight + 2, holeRadiusBody + coverTolerance);
     }
   }
   
